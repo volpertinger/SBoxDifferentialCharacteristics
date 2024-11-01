@@ -10,14 +10,15 @@ class Program
     {
         try
         {
+            // Замер времени выполнения
+            var watch = new ExecutionWatch();
+            watch.allProgram.Start();
+
             // Чтение конфигурации
             var settings = new Settings();
 
             // Создание логгера
             Logger logger = new Logger(settings.logToConsole, settings.logToFile, settings.logPath);
-
-
-            Stopwatch stopwatch = Stopwatch.StartNew();
 
             // Чтение входных данных
             string[] inputs = File.ReadAllLines(settings.inputPath);
@@ -57,8 +58,8 @@ class Program
 
             File.WriteAllLines(settings.outputPath, results);
 
-            stopwatch.Stop();
-            logger.LogInfo($"Execution time: {stopwatch.Elapsed.TotalSeconds} seconds");
+            watch.allProgram.Stop();
+            logger.LogInfo($"Execution time: {watch.allProgram.Elapsed.TotalSeconds} seconds");
 
         }
         catch (Exception ex)
