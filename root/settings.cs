@@ -23,6 +23,21 @@ public class Settings
     /// </summary>
     public int variableCount { get; private set; }
 
+    /// <summary>
+    /// Количество возможных входных векторов
+    /// </summary>
+    public int possibleInputsCount { get; private set; }
+
+    /// <summary>
+    /// Флаг для записи логов в консоль
+    /// </summary>
+    public bool logToConsole { get; private set; }
+
+    /// <summary>
+    /// Флаг для записи логов в файл
+    /// </summary>
+    public bool logToFile { get; private set; }
+
     public Settings()
     {
         var settings = File.ReadAllLines("root/settings.conf")
@@ -33,5 +48,8 @@ public class Settings
         outputPath = settings["output_file"];
         logPath = settings["log_file"];
         variableCount = int.Parse(settings["variable_count"]);
+        possibleInputsCount = (int)Math.Pow(2, variableCount);
+        logToConsole = bool.Parse(settings["log_to_console"]);
+        logToFile = bool.Parse(settings["log_to_file"]);
     }
 }

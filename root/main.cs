@@ -13,55 +13,53 @@ class Program
             // Чтение конфигурации
             var settings = new Settings();
 
-            // Количество возможных входных векторов
-            int possibleInputsCount = (int)Math.Pow(2, settings.variableCount);
+            // Создание логгера
+            Logger logger = new Logger(settings.logToConsole, settings.logToFile, settings.logPath);
 
-            // Логирование
-            using (StreamWriter logWriter = new StreamWriter(settings.logPath, true))
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
+            // Чтение входных данных
+            string[] inputs = File.ReadAllLines(settings.inputPath);
+
+            // Проверка входных данных на корректность
+            if (inputs.Length != settings.possibleInputsCount)
             {
-                Stopwatch stopwatch = Stopwatch.StartNew();
-                
-                // Чтение входных данных
-                string[] inputs = File.ReadAllLines(settings.inputPath);
+                Console.WriteLine($"Ошибка: Входные данные должны содержать {settings.possibleInputsCount} строк, а не {inputs.Length}.");
+                return;
+            }
 
-                // Проверка входных данных на корректность
-                if (inputs.Length != possibleInputsCount)
+            HashSet<string> uniqueInputs = new HashSet<string>();
+
+            foreach (var input in inputs)
+            {
+                if (!IsInputValid(input, settings.variableCount))
                 {
-                    Console.WriteLine($"Ошибка: Входные данные должны содержать {possibleInputsCount} строк, а не {inputs.Length}.");
+                    Console.WriteLine($"Ошибка: Входные данные '{input}' некорректны. Ожидалось {settings.variableCount} переменных (0 или 1).");
                     return;
                 }
 
-                HashSet<string> uniqueInputs = new HashSet<string>();
-
-                foreach (var input in inputs)
+                // Проверка на уникальность
+                if (!uniqueInputs.Add(input))
                 {
-                    if (!IsInputValid(input, settings.variableCount))
-                    {
-                        Console.WriteLine($"Ошибка: Входные данные '{input}' некорректны. Ожидалось {settings.variableCount} переменных (0 или 1).");
-                        return;
-                    }
-
-                    // Проверка на уникальность
-                    if (!uniqueInputs.Add(input))
-                    {
-                        Console.WriteLine($"Ошибка: Входное значение '{input}' не уникально.");
-                        return;
-                    }
+                    Console.WriteLine($"Ошибка: Входное значение '{input}' не уникально.");
+                    return;
                 }
-
-                // Запись результатов в выходной файл
-                var results = new string[possibleInputsCount];
-
-                for (int i = 0; i < possibleInputsCount; i++)
-                {
-                    results[i] = $"Вектор {Convert.ToString(i, 2).PadLeft(settings.variableCount, '0')} => {inputs[i]}";
-                }
-
-                File.WriteAllLines(settings.outputPath, results);
-                
-                stopwatch.Stop();
-                logWriter.WriteLine($"Execution time: {stopwatch.Elapsed.TotalSeconds} seconds");
             }
+
+            // Запись результатов в выходной файл
+            var results = new string[settings.possibleInputsCount];
+
+            for (int i = 0; i < settings.possibleInputsCount; i++)
+            {
+                results[i] = $"Вектор {Convert.ToString(i, 2).PadLeft(settings.variableCount, '0')} => {inputs[i]}";
+            }
+
+            File.WriteAllLines(settings.outputPath, results);
+
+            stopwatch.Stop();
+            logger.LogInfo($"Execution time: {stopwatch.Elapsed.TotalSeconds} seconds");
+
         }
         catch (Exception ex)
         {
