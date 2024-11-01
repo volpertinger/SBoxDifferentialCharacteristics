@@ -1,7 +1,0 @@
-11/1/2024 11:55:47 PM: INFO: Start
-11/1/2024 11:55:47 PM: INFO: 
-Execution time [allProgram]: 0.027306 second
-Execution time [inputCheck]: 0.0008579 seconds
-Execution time [inputPreparation]: 0.0006486 seconds
-Execution time [mainAlgorithm]: 0.0014437 seconds
-
