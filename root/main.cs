@@ -49,7 +49,7 @@ class Program
             File.WriteAllLines(settings.outputPath, results);
 
             watch.StopAll();
-            logger.LogInfo($"Execution time [allProgram]: {watch.allProgram.Elapsed.TotalSeconds} second\n" +
+            logger.LogInfo($"\nExecution time [allProgram]: {watch.allProgram.Elapsed.TotalSeconds} second\n" +
             $"Execution time [inputCheck]: {watch.inputCheck.Elapsed.TotalSeconds} seconds\n" +
             $"Execution time [inputPreparation]: {watch.inputPreparation.Elapsed.TotalSeconds} seconds\n" +
             $"Execution time [mainAlgorithm]: {watch.mainAlgorithm.Elapsed.TotalSeconds} seconds\n"
