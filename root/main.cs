@@ -45,7 +45,8 @@ class Program
                 watch.sequentialAlgorithm.Start();
                 sbox.calculateDifferentialCharacteristicsSequential();
                 watch.sequentialAlgorithm.Stop();
-                sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
+                if (settings.isNeedToWriteResult)
+                    sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
             }
 
             if (settings.calculateDifferentialCharacteristicsParallel)
@@ -53,10 +54,10 @@ class Program
                 watch.parallelAlgorithm.Start();
                 sbox.calculateDifferentialCharacteristicsParallel(settings.threadsCount);
                 watch.parallelAlgorithm.Stop();
-            }
+                if (settings.isNeedToWriteResult)
+                    sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
 
-            // Запись результатов в выходной файл
-            //File.WriteAllLines(settings.outputPath, results);
+            }
 
             watch.StopAll();
             logger.LogInfo(watch.ToString());

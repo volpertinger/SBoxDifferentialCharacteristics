@@ -15,6 +15,11 @@ public class Settings
     public string outputPath { get; private set; }
 
     /// <summary>
+    /// Флаг нееобходимости записи результата
+    /// </summary>
+    public bool isNeedToWriteResult { get; private set; }
+
+    /// <summary>
     /// Путь к файлу лога
     /// </summary>
     public string logPath { get; private set; }
@@ -76,6 +81,7 @@ public class Settings
 
         inputPath = settings["input_file"];
         outputPath = settings["output_file"];
+        isNeedToWriteResult = logToFile = bool.Parse(settings["is_need_to_write_result"]);
         logPath = settings["log_file"];
         variableCount = int.Parse(settings["variable_count"]);
         possibleInputsCount = (int)Math.Pow(2, variableCount);
