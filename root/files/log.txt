@@ -5,3 +5,17 @@ Execution time [inputCheck]: 0.0005738 seconds
 Execution time [inputPreparation]: 0.0006371 seconds
 Execution time [mainAlgorithm]: 0.001468 seconds
 
+11/3/2024 2:03:59 PM: INFO: Start
+11/3/2024 2:03:59 PM: INFO: 
+Execution time [allProgram]: 0.0270368 second
+Execution time [inputCheck]: 0.0006046 seconds
+Execution time [inputPreparation]: 0.0006588 seconds
+Execution time [mainAlgorithm]: 0.0014245 seconds
+
+11/3/2024 2:34:01 PM: INFO: Start
+11/3/2024 2:34:01 PM: INFO: 
+Execution time [allProgram]: 0.0232182 second
+Execution time [inputCheck]: 0.0005074 seconds
+Execution time [inputPreparation]: 0.0005184 seconds
+Execution time [mainAlgorithm]: 0.0011564 seconds
+

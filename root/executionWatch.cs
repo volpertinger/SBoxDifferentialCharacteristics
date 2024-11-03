@@ -1,5 +1,8 @@
 using System.Diagnostics;
 
+/// <summary>
+/// Класс необходим для подсчета времени выполнения программы в целом и отдельных ее частей
+/// </summary>
 public class ExecutionWatch
 {
 
@@ -23,6 +26,9 @@ public class ExecutionWatch
     /// </summary>
     public Stopwatch inputPreparation { get; private set; }
 
+    /// <summary>
+    /// Останавливает все таймеры
+    /// </summary>
     public void StopAll()
     {
         allProgram.Stop();
@@ -31,6 +37,9 @@ public class ExecutionWatch
         inputPreparation.Stop();
     }
 
+    /// <summary>
+    /// Инициализирует все таймеры
+    /// </summary>
     public ExecutionWatch()
     {
         allProgram = new Stopwatch();

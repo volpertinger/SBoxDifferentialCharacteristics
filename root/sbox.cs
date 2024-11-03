@@ -4,10 +4,19 @@ public class SBox
     //=================================================================================================================
     // Private variables
     //=================================================================================================================
+    /// <summary>
+    /// Массив значений функции
+    /// </summary>
     private Node[] _output;
 
+    /// <summary>
+    /// Ичсло переменных функции
+    /// </summary>
     private int _variable_count;
 
+    /// <summary>
+    /// Массив возможноых входных векторов функции
+    /// </summary>
     private Node[] _input;
 
     //=================================================================================================================
@@ -15,11 +24,20 @@ public class SBox
     //=================================================================================================================
 
 
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="output">Массив значений функции, вектор представлен в строковом виде</param>
+    /// <param name="variable_count">Количество переменных функции</param>
     public SBox(string[] output, int variable_count)
     {
         _variable_count = variable_count;
+
+        // Получение булевых массивов из строк
         var output_array = GenerateBooleanArrayFromStrings(output);
         var input_array = GenerateBooleanArrayFromPermutations(_variable_count);
+
+        // Конвертация булевых массивов в массива класса Node
         _output = Node.ConvertBooleanArrayToNode(output_array);
         _input = Node.ConvertBooleanArrayToNode(input_array);
     }
@@ -28,31 +46,61 @@ public class SBox
     //=================================================================================================================
     // Public
     //=================================================================================================================
+    /// <summary>
+    /// Получение значения функции по входному значению
+    /// </summary>
+    /// <param name="input">Значение входа в векторном представлении</param>
+    /// <returns>Значение функции в векторном представлении</returns>
     public bool[] getVectorResult(bool[] input)
     {
         return _output[ConvertBooleanArrayToDecimal(input)].booleanArray;
     }
 
+    /// <summary>
+    /// Получение значения функции по входному значению
+    /// </summary>
+    /// <param name="index">Значение входа в десятичном представлении</param>
+    /// <returns>Значение функции в векторном представлении</returns>
     public bool[] getVectorResult(int index)
     {
         return _output[index].booleanArray;
     }
 
+    /// <summary>
+    /// Получение значения функции по входному значению
+    /// </summary>
+    /// <param name="input">Значение входа в векторном представлении</param>
+    /// <returns>Значение функции в десятичном представлении</returns>
     public int getNumberResult(bool[] input)
     {
         return _output[ConvertBooleanArrayToDecimal(input)].decimalNumber;
     }
 
+    /// <summary>
+    /// Получение значения функции по входному значению
+    /// </summary>
+    /// <param name="index">Значение входа в десятичном представлении</param>
+    /// <returns>Значение функции в десятичном представлении</returns>
     public int getNumberResult(int index)
     {
         return _output[index].decimalNumber;
     }
 
+    /// <summary>
+    /// Получение значения функции по входному значению
+    /// </summary>
+    /// <param name="input">Значение входа в векторном представлении</param>
+    /// <returns>Значение функции в строковом представлении</returns>
     public string getStringResult(bool[] input)
     {
         return string.Join("", getVectorResult(input).Select(b => b ? '1' : '0'));
     }
 
+    /// <summary>
+    /// Получение значения функции по входному значению
+    /// </summary>
+    /// <param name="index">Значение входа в десятичном представлении</param>
+    /// <returns>Значение функции в строковом представлении</returns>
     public string getStringResult(int index)
     {
         return string.Join("", getVectorResult(index).Select(b => b ? '1' : '0'));
@@ -62,6 +110,11 @@ public class SBox
     // Static
     //=================================================================================================================
 
+    /// <summary>
+    /// Генерирует все возможные перестановки 0 и 1 в векторном виде длниы variables
+    /// </summary>
+    /// <param name="variables">Число переменных функции, длина векторов перестановок</param>
+    /// <returns>Двумерный массив всех возможных перестановок 0 и 1</returns>
     public static bool[][] GenerateBooleanArrayFromPermutations(int variables)
     {
         int rows = (int)Math.Pow(2, variables); // Вычисляем количество строк
@@ -81,6 +134,11 @@ public class SBox
         return result;
     }
 
+    /// <summary>
+    /// Генерирует массив булевых векторов по массиву строк
+    /// </summary>
+    /// <param name="binaryStrings">Строки, представляющие собой булевый вектор и состоящие из 0 и 1 без пробелов</param>
+    /// <returns>Двумерный булевый массив</returns>
     public static bool[][] GenerateBooleanArrayFromStrings(string[] binaryStrings)
     {
         // Определяем количество строк и столбцов
@@ -104,6 +162,11 @@ public class SBox
         return result;
     }
 
+    /// <summary>
+    /// Переводит булевый вектор в соответствующее числовое значение
+    /// </summary>
+    /// <param name="boolArray">Булевый массив</param>
+    /// <returns>Десятичное представление булевого массива</returns>
     public static int ConvertBooleanArrayToDecimal(bool[] boolArray)
     {
         int decimalValue = 0;
@@ -122,20 +185,39 @@ public class SBox
     }
 
     //=================================================================================================================
-    // Static
+    // Node
     //=================================================================================================================
 
+    /// <summary>
+    /// Класс, представляющий собой булевый вектор в S box
+    /// </summary>
     private class Node
     {
+        /// <summary>
+        /// Десятичное представление булевого вектора
+        /// </summary>
         public int decimalNumber { get; set; }
+
+        /// <summary>
+        /// Булевый вектор
+        /// </summary>
         public bool[] booleanArray { get; set; }
 
+        /// <summary>
+        /// Базовый конструктор класса
+        /// </summary>
+        /// <param name="_booleanArray">Булевый массив</param>
         public Node(bool[] _booleanArray)
         {
             booleanArray = _booleanArray;
             decimalNumber = ConvertBooleanArrayToDecimal(booleanArray);
         }
 
+        /// <summary>
+        /// Конвертирует двумерный булевый массив в массив класса Node
+        /// </summary>
+        /// <param name="input">Двумерный булевый массив</param>
+        /// <returns>Массив класса Node</returns>
         public static Node[] ConvertBooleanArrayToNode(bool[][] input)
         {
             Node[] result = new Node[input.Length];

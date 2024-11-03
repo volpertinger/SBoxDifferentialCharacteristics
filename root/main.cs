@@ -4,6 +4,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 
+/// <summary>
+/// Суть программы: подсчет разностных характеристик S блока последовательным и параллельным алгоритмами
+/// </summary>
 class Program
 {
     static void Main(string[] args)
@@ -15,7 +18,7 @@ class Program
             watch.allProgram.Start();
 
             // Чтение конфигурации
-            var settings = new Settings();
+            var settings = new Settings("root/settings.conf");
 
             // Создание логгера
             Logger logger = new Logger(settings.logToConsole, settings.logToFile, settings.logPath);

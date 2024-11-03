@@ -1,5 +1,9 @@
 using System.IO;
 using System.Configuration;
+
+/// <summary>
+/// Представление необходимых параметров в виде класса
+/// </summary>
 public class Settings
 {
 
@@ -38,9 +42,13 @@ public class Settings
     /// </summary>
     public bool logToFile { get; private set; }
 
-    public Settings()
+    /// <summary>
+    /// Базовый конструктор, который берет данные из файла, расположенного по пути path
+    /// </summary>
+    /// <param name="path">Путь файла с настройками</param>
+    public Settings(string path)
     {
-        var settings = File.ReadAllLines("root/settings.conf")
+        var settings = File.ReadAllLines(path)
                                 .Select(line => line.Split('='))
                                 .ToDictionary(parts => parts[0].Trim(), parts => parts[1].Trim());
 
