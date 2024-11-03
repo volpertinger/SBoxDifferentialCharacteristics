@@ -200,6 +200,15 @@ public class SBox
 
     public void calculateDifferentialCharacteristicsSequential()
     {
+        for (int i = 0; i < _input.Length; ++i)
+        {
+            for (int j = 0; j < _input.Length; ++j)
+            {
+                var input_diff = Node.GetDiff(_input[i], _input[j]);
+                var output_diff = Node.GetDiff(_output[i], _output[j]);
+                _differentialCharacteristic.IncrementDifference(input_diff, output_diff);
+            }
+        }
         return;
     }
 
@@ -260,6 +269,7 @@ public class SBox
             {
                 result += (lhs.booleanArray[i] ^ rhs.booleanArray[i]) ? 1 : 0;
             }
+            result = lhs.decimalNumber ^ rhs.decimalNumber;
             return result;
         }
     }
@@ -298,6 +308,11 @@ public class SBox
             }
 
             padLength = СountDigits(length);
+        }
+
+        public void IncrementDifference(int input_diff, int output_diff)
+        {
+            differentialCharacteristic[input_diff][output_diff] += 1;
         }
 
         /// <summary>
