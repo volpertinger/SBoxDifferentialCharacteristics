@@ -47,6 +47,22 @@ public class SBox
         _differentialCharacteristic = new DifferentialCharacteristic(variable_count);
     }
 
+    /// <summary>
+    /// Уонструктор копирования
+    /// </summary>
+    /// <param name="sbox">SBox, который необходимо скопировать</param>
+    public SBox(SBox sbox, Node[] input)
+    {
+        _variable_count = sbox._variable_count;
+
+        // Конвертация булевых массивов в массива класса Node
+        _output = sbox._output;
+        _input = input;
+
+        // Инициализация пустых разностных характеристик
+        _differentialCharacteristic = new DifferentialCharacteristic(_variable_count);
+    }
+
 
     //=================================================================================================================
     // Public
@@ -193,10 +209,31 @@ public class SBox
         return decimalValue;
     }
 
+    /// <summary>
+    /// Разделяет массив на split_count почти равных частей
+    /// </summary>
+    private static Node[][] SplitArray(Node[] array, int split_count)
+    {
+        if (split_count <= 0)
+            throw new ArgumentException($"split_count must be grater than 0, {split_count} <= 0");
+
+        int totalLength = array.Length;
+        int partLength = totalLength / split_count; // Длина каждой части
+        int remainder = totalLength % split_count; // Остаток
+
+        // Разделение массива с использованием LINQ
+        return Enumerable.Range(0, split_count)
+                         .Select(i => array.Skip(i * partLength).Take(partLength + (i == split_count - 1 ? remainder : 0)).ToArray())
+                         .ToArray();
+    }
+
     //=================================================================================================================
     // Differential Characteristics Calculation
     //=================================================================================================================
 
+    /// <summary>
+    /// Calculates differential characteristics of S Box sequential
+    /// </summary>
     public void calculateDifferentialCharacteristicsSequential()
     {
         _differentialCharacteristic.differentialCharacteristic[0][0] = _input.Length;
@@ -213,8 +250,34 @@ public class SBox
         return;
     }
 
+    /// <summary>
+    /// Calculates differential characteristics of S Box parallel
+    /// </summary>
+    /// <param name="threads">Threads count</param>
     public void calculateDifferentialCharacteristicsParallel(int threads)
     {
+        var splitted_input = SplitArray(_input, threads);
+        var result = new SBox[threads];
+
+        // Параллельный вывод массивов
+        Parallel.For(0, splitted_input.Length, i =>
+        {
+            var sbox = new SBox(this, splitted_input[i]);
+            sbox.calculateDifferentialCharacteristicsSequential();
+            result[i] = sbox;
+        });
+
+        var length = _differentialCharacteristic.differentialCharacteristic.Length;
+        for (int i = 0; i < threads; ++i)
+        {
+            for (int j = 0; j < length; ++j)
+            {
+                for (int k = 0; k < length; ++k)
+                {
+                    _differentialCharacteristic.differentialCharacteristic[j][k] += result[i]._differentialCharacteristic.differentialCharacteristic[j][k];
+                }
+            }
+        }
         return;
     }
 
@@ -226,7 +289,7 @@ public class SBox
     /// <summary>
     /// Класс, представляющий собой булевый вектор в S box
     /// </summary>
-    private class Node
+    public class Node
     {
         /// <summary>
         /// Десятичное представление булевого вектора

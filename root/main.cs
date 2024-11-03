@@ -56,7 +56,6 @@ class Program
                 watch.parallelAlgorithm.Stop();
                 if (settings.isNeedToWriteResult)
                     sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
-
             }
 
             watch.StopAll();
