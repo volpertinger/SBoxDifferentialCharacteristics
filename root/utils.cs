@@ -30,7 +30,7 @@ public static class MatrixFormatter
             result.Append($"{i.ToString().PadLeft(padding)}|");
             for (int j = 0; j < numCols; j++)
             {
-                result.Append($"{matrix[i][j].ToString().PadLeft(padding)}:");
+                result.Append($"{matrix[i][j].ToString().PadLeft(padding)} ");
             }
             result.AppendLine();
         }
