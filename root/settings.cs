@@ -55,6 +55,16 @@ public class Settings
     public int threadsCount { get; private set; }
 
     /// <summary>
+    /// Флаг для генерации S box и записи в outputPath вместо чтения оттуда
+    /// </summary>
+    public bool generatePermutations { get; private set; }
+
+    /// <summary>
+    /// Размер буфера для записи в файл
+    /// </summary>
+    public int writeBuffer { get; private set; }
+
+    /// <summary>
     /// Базовый конструктор, который берет данные из файла, расположенного по пути path
     /// </summary>
     /// <param name="path">Путь файла с настройками</param>
@@ -74,5 +84,15 @@ public class Settings
         calculateDifferentialCharacteristicsSequential = bool.Parse(settings["calculate_differential_characteristics_sequential"]);
         calculateDifferentialCharacteristicsParallel = bool.Parse(settings["calculate_differential_characteristics_parallel"]);
         threadsCount = int.Parse(settings["threads_count"]);
+        generatePermutations = bool.Parse(settings["generate_permutations"]);
+        writeBuffer = int.Parse(settings["write_buffer"]);
+    }
+
+    public override string ToString()
+    {
+        return $"variables: {variableCount}; inputs: {possibleInputsCount};\n" +
+        $"calculate sequential: {calculateDifferentialCharacteristicsSequential};\n" +
+        $"calculate parallel: {calculateDifferentialCharacteristicsParallel}; threads: {threadsCount};\n" +
+        $"permutations generation: {generatePermutations};";
     }
 }

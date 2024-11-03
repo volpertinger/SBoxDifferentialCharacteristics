@@ -321,9 +321,9 @@ public class SBox
         /// Представляет двумерный массив в человекочитаемом виде
         /// </summary>
         /// <returns>Строковое представление двумерного массива</returns>
-        public override string ToString()
+        public void WriteToFile(string path, int buffer)
         {
-            return MatrixFormatter.FormatMatrix(differentialCharacteristic, padLength);
+            MatrixFormatter.FormatMatrix(differentialCharacteristic, padLength, path, buffer);
         }
 
         private static int СountDigits(int number)

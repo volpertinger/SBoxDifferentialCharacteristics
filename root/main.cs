@@ -16,10 +16,14 @@ class Program
 
             // Создание логгера
             Logger logger = new Logger(settings.logToConsole, settings.logToFile, settings.logPath);
-            logger.LogInfo("Start");
+            logger.LogInfo($"Start\n{settings.ToString()}\n");
 
             // Чтение входных данных
             watch.inputPreparation.Start();
+            if (settings.generatePermutations)
+            {
+                PermutationsGenerator.generate(settings.inputPath, settings.variableCount);
+            }
             string[] inputs = File.ReadAllLines(settings.inputPath);
             watch.inputPreparation.Stop();
 
@@ -35,14 +39,13 @@ class Program
 
             // Вычисление разностных характеристик
 
-            var results = new string[2];
 
             if (settings.calculateDifferentialCharacteristicsSequential)
             {
                 watch.sequentialAlgorithm.Start();
                 sbox.calculateDifferentialCharacteristicsSequential();
                 watch.sequentialAlgorithm.Stop();
-                results[0] = sbox.GetDifferentialCharacteristic().ToString();
+                sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
             }
 
             if (settings.calculateDifferentialCharacteristicsParallel)
@@ -50,11 +53,10 @@ class Program
                 watch.parallelAlgorithm.Start();
                 sbox.calculateDifferentialCharacteristicsParallel(settings.threadsCount);
                 watch.parallelAlgorithm.Stop();
-                results[1] = sbox.GetDifferentialCharacteristic().ToString();
             }
 
             // Запись результатов в выходной файл
-            File.WriteAllLines(settings.outputPath, results);
+            //File.WriteAllLines(settings.outputPath, results);
 
             watch.StopAll();
             logger.LogInfo(watch.ToString());
