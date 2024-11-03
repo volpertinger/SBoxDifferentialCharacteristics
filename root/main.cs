@@ -39,13 +39,17 @@ class Program
 
             if (settings.calculateDifferentialCharacteristicsSequential)
             {
+                watch.sequentialAlgorithm.Start();
                 sbox.calculateDifferentialCharacteristicsSequential();
+                watch.sequentialAlgorithm.Stop();
                 results[0] = sbox.GetDifferentialCharacteristic().ToString();
             }
 
             if (settings.calculateDifferentialCharacteristicsParallel)
             {
+                watch.parallelAlgorithm.Start();
                 sbox.calculateDifferentialCharacteristicsParallel(settings.threadsCount);
+                watch.parallelAlgorithm.Stop();
                 results[1] = sbox.GetDifferentialCharacteristic().ToString();
             }
 
