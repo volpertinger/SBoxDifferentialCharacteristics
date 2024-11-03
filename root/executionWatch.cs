@@ -1,38 +1,38 @@
 using System.Diagnostics;
 
 /// <summary>
-/// Класс необходим для подсчета времени выполнения программы в целом и отдельных ее частей
+/// The class is necessary for calculating the execution time of the program as a whole and its individual parts
 /// </summary>
 public class ExecutionWatch
 {
 
     /// <summary>
-    /// Расчет времени выполнения всей программы
+    /// Calculation of the execution time of the entire program
     /// </summary>
     public Stopwatch allProgram { get; private set; }
 
     /// <summary>
-    /// Расчет времени выполнения последовательного алгоритма
+    /// Calculation of the execution time of the sequential algorithm
     /// </summary>
     public Stopwatch sequentialAlgorithm { get; private set; }
 
     /// <summary>
-    /// Расчет времени выполнения параллельного алгоритма
+    /// Calculation of the execution time of the parallel algorithm
     /// </summary>
     public Stopwatch parallelAlgorithm { get; private set; }
 
     /// <summary>
-    /// Расчет времени проверки корректности входных данных
+    /// Calculation of the time for checking the correctness of the input data
     /// </summary>
     public Stopwatch inputCheck { get; private set; }
 
     /// <summary>
-    /// Расчет времени подготовки входных данных для начала выполнения основного алгоритма
+    /// Calculation of the input data preparation time to start executing the main algorithm
     /// </summary>
     public Stopwatch inputPreparation { get; private set; }
 
     /// <summary>
-    /// Останавливает все таймеры
+    /// Stops all timers
     /// </summary>
     public void StopAll()
     {
@@ -54,7 +54,7 @@ public class ExecutionWatch
     }
 
     /// <summary>
-    /// Инициализирует все таймеры
+    /// Initializes all timers
     /// </summary>
     public ExecutionWatch()
     {

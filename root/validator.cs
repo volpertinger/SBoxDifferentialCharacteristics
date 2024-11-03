@@ -1,41 +1,40 @@
 /// <summary>
-/// Класс для валидации входных данных
+/// A class for validating input data
 /// </summary>
 public static class Validator
 {
 
     /// <summary>
-    /// Проверка корректности входных данных: булевого массива, представленного в виде массива строк из 0 и 1
+    /// Checking the correctness of the input data: a Boolean array represented as an array of strings of 0 and 1
     /// </summary>
-    /// <param name="inputs">Булевый массив, представленный в виде массива строк из 0 и 1</param>
-    /// <param name="settings">Экземпляр класса с настройками, считанными из файла</param>
-    /// <param name="logger">Экземпляр класса логгера</param>
-    /// <returns></returns>
+    /// <param name="inputs">A Boolean array represented as an array of strings of 0 and 1</param>
+    /// <param name="settings">An instance of a class with settings read from a file</param>
+    /// <param name="logger">An instance of the logger class</param>
     public static bool isInputCorrect(string[] inputs, Settings settings, Logger logger)
     {
 
-        // Проверка размера массива булевых векторов на соответствие необходимому количествву при заданном числе переменных
+        // Checking the size of an array of Boolean vectors to match the required number for a given number of variables
         if (inputs.Length != settings.possibleInputsCount)
         {
-            logger.LogError($"Ошибка: Входные данные должны содержать {settings.possibleInputsCount} строк, а не {inputs.Length}.");
+            logger.LogError($"Mistake: The input data should contain a {settings.possibleInputsCount} string, not {inputs.Length}.");
             return false;
         }
 
-        // Проверка каждой строки входного массива на корректность и уникальность
+        // Checking each row of the input array for correctness and uniqueness
         HashSet<string> uniqueInputs = new HashSet<string>();
         foreach (var input in inputs)
         {
-            // проверка на корректность
+            // Checking for correctness
             if (!IsStringVectorValid(input, settings.variableCount))
             {
-                Console.WriteLine($"Ошибка: Входные данные '{input}' некорректны. Ожидалось {settings.variableCount} переменных (0 или 1).");
+                Console.WriteLine($"Mistake: The input data '{input}' is incorrect. Expected {settings.variableCount} of variables (0 or 1).");
                 return false;
             }
 
-            // Проверка на уникальность
+            // Checking for uniqueness
             if (!uniqueInputs.Add(input))
             {
-                Console.WriteLine($"Ошибка: Входное значение '{input}' не уникально.");
+                Console.WriteLine($"Mistake: The input value of '{input}' is not unique.");
                 return false;
             }
         }
@@ -45,14 +44,13 @@ public static class Validator
     }
 
     /// <summary>
-    /// Проверка входного строкового вектора на корректность для булевого представления вектора
+    /// Checking the input string vector for correctness for the Boolean representation of the vector
     /// </summary>
-    /// <param name="input">Булевый вектор, представленный в виде строки</param>
-    /// <param name="variableCount">Число переменных функции</param>
-    /// <returns></returns>
+    /// <param name="input">A Boolean vector represented as a string</param>
+    /// <param name="variableCount">Number of function variables</param>
     static bool IsStringVectorValid(string input, int variableCount)
     {
-        // Проверка на количество символов и допустимость только '0' и '1'
+        // Checking for the number of characters and the validity of only '0' and '1'
         return input.Length == variableCount && input.All(c => c == '0' || c == '1');
     }
 

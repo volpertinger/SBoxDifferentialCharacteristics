@@ -1,78 +1,78 @@
 /// <summary>
-/// Представление необходимых параметров в виде класса
+/// Representation of necessary parameters in the form of a class
 /// </summary>
 public class Settings
 {
 
     /// <summary>
-    /// Путь к файлу входа
+    /// The path to the login file
     /// </summary>
     public string inputPath { get; private set; }
 
     /// <summary>
-    /// Путь к файлу выхода
+    /// The path to the output file
     /// </summary>
     public string outputPath { get; private set; }
 
     /// <summary>
-    /// Флаг нееобходимости записи результата
+    /// Flag of the need to record the result
     /// </summary>
     public bool isNeedToWriteResult { get; private set; }
 
     /// <summary>
-    /// Путь к файлу лога
+    /// The path to the log file
     /// </summary>
     public string logPath { get; private set; }
 
     /// <summary>
-    /// Количество переменных
+    /// Number of variables
     /// </summary>
     public int variableCount { get; private set; }
 
     /// <summary>
-    /// Количество возможных входных векторов
+    /// The number of possible input vectors
     /// </summary>
     public int possibleInputsCount { get; private set; }
 
     /// <summary>
-    /// Флаг для записи логов в консоль
+    /// Flag for writing logs to the console
     /// </summary>
     public bool logToConsole { get; private set; }
 
     /// <summary>
-    /// Флаг для записи логов в файл
+    /// Flag for writing logs to a file
     /// </summary>
     public bool logToFile { get; private set; }
 
     /// <summary>
-    /// Флаг для помледовательного вычисления разностных характеристик S Box
+    /// Flag for sequential calculation of the difference characteristics of the S Box
     /// </summary>
     public bool calculateDifferentialCharacteristicsSequential { get; private set; }
 
     /// <summary>
-    /// Флаг для параллельного вычисления разностных характеристик S Box
+    /// Flag for parallel calculation of the difference characteristics of the S Box
     /// </summary>
     public bool calculateDifferentialCharacteristicsParallel { get; private set; }
 
     /// <summary>
-    /// Количество потоков для параллельной работы алгоритма
+    /// The number of threads for parallel operation of the algorithm
     /// </summary>
     public int threadsCount { get; private set; }
 
     /// <summary>
-    /// Флаг для генерации S box и записи в outputPath вместо чтения оттуда
+    /// A flag for generating the S box and writing to the output Path instead of reading from there
     /// </summary>
     public bool generatePermutations { get; private set; }
 
     /// <summary>
-    /// Размер буфера для записи в файл
+    /// The size of the buffer to write to the file
     /// </summary>
     public int writeBuffer { get; private set; }
 
     /// <summary>
-    /// Базовый конструктор, который берет данные из файла, расположенного по пути path
+    /// A basic constructor that takes data from a file located on the path
     /// </summary>
-    /// <param name="path">Путь файла с настройками</param>
+    /// <param name="path">The path of the settings file</param>
     public Settings(string path)
     {
         var settings = File.ReadAllLines(path)

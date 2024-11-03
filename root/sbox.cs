@@ -5,17 +5,17 @@ public class SBox
     // Private variables
     //=================================================================================================================
     /// <summary>
-    /// Массив значений функции
+    /// Array of function values
     /// </summary>
     private Node[] _output;
 
     /// <summary>
-    /// Число переменных функции
+    /// Number of function variables
     /// </summary>
     private int _variable_count;
 
     /// <summary>
-    /// Массив возможных входных векторов функции
+    /// Array of possible input vectors of the function
     /// </summary>
     private Node[] _input;
 
@@ -27,39 +27,38 @@ public class SBox
 
 
     /// <summary>
-    /// Конструктор
+    /// Constructor
     /// </summary>
-    /// <param name="output">Массив значений функции, вектор представлен в строковом виде</param>
-    /// <param name="variable_count">Количество переменных функции</param>
+    /// <param name="output">An array of function values, the vector is represented in string form</param>
+    /// <param name="variable_count">Number of function variables</param>
     public SBox(string[] output, int variable_count)
     {
         _variable_count = variable_count;
 
-        // Получение булевых массивов из строк
+        // Getting Boolean arrays from strings
         var output_array = GenerateBooleanArrayFromStrings(output);
         var input_array = GenerateBooleanArrayFromPermutations(_variable_count);
 
-        // Конвертация булевых массивов в массива класса Node
+        // Converting Boolean arrays in an array of the Node class
         _output = Node.ConvertBooleanArrayToNode(output_array);
         _input = Node.ConvertBooleanArrayToNode(input_array);
 
-        // Инициализация пустых разностных характеристик
+        // Initialization of empty difference characteristics
         _differentialCharacteristic = new DifferentialCharacteristic(variable_count);
     }
 
     /// <summary>
-    /// Уонструктор копирования
+    /// Copy Constructor
     /// </summary>
-    /// <param name="sbox">SBox, который необходимо скопировать</param>
     public SBox(SBox sbox, Node[] input)
     {
         _variable_count = sbox._variable_count;
 
-        // Конвертация булевых массивов в массива класса Node
+        // Converting Boolean arrays in an array of the Node class
         _output = sbox._output;
         _input = input;
 
-        // Инициализация пустых разностных характеристик
+        // Initialization of empty difference characteristics
         _differentialCharacteristic = new DifferentialCharacteristic(_variable_count);
     }
 
@@ -68,60 +67,60 @@ public class SBox
     // Public
     //=================================================================================================================
     /// <summary>
-    /// Получение значения функции по входному значению
+    /// Getting the function value from the input value
     /// </summary>
-    /// <param name="input">Значение входа в векторном представлении</param>
-    /// <returns>Значение функции в векторном представлении</returns>
+    /// <param name="input">The value of the input in the vector representation</param>
+    /// <returns>The value of a function in a vector representation</returns>
     public bool[] getVectorResult(bool[] input)
     {
         return _output[ConvertBooleanArrayToDecimal(input)].booleanArray;
     }
 
     /// <summary>
-    /// Получение значения функции по входному значению
+    /// Getting the function value from the input value
     /// </summary>
-    /// <param name="index">Значение входа в десятичном представлении</param>
-    /// <returns>Значение функции в векторном представлении</returns>
+    /// <param name="index">The value of the input in decimal representation</param>
+    /// <returns>The value of a function in a vector representation</returns>
     public bool[] getVectorResult(int index)
     {
         return _output[index].booleanArray;
     }
 
     /// <summary>
-    /// Получение значения функции по входному значению
+    /// Getting the function value from the input value
     /// </summary>
-    /// <param name="input">Значение входа в векторном представлении</param>
-    /// <returns>Значение функции в десятичном представлении</returns>
+    /// <param name="input">The value of the input in the vector representation</param>
+    /// <returns>The value of the function in decimal representation</returns>
     public int getNumberResult(bool[] input)
     {
         return _output[ConvertBooleanArrayToDecimal(input)].decimalNumber;
     }
 
     /// <summary>
-    /// Получение значения функции по входному значению
+    /// Getting the function value from the input value
     /// </summary>
-    /// <param name="index">Значение входа в десятичном представлении</param>
-    /// <returns>Значение функции в десятичном представлении</returns>
+    /// <param name="index">The value of the input in decimal representation</param>
+    /// <returns>The value of the function in decimal representation</returns>
     public int getNumberResult(int index)
     {
         return _output[index].decimalNumber;
     }
 
     /// <summary>
-    /// Получение значения функции по входному значению
+    /// Getting the function value from the input value
     /// </summary>
-    /// <param name="input">Значение входа в векторном представлении</param>
-    /// <returns>Значение функции в строковом представлении</returns>
+    /// <param name="input">The value of the input in the vector representation</param>
+    /// <returns>The value of the function in the string representation</returns>
     public string getStringResult(bool[] input)
     {
         return string.Join("", getVectorResult(input).Select(b => b ? '1' : '0'));
     }
 
     /// <summary>
-    /// Получение значения функции по входному значению
+    /// Getting the function value from the input value
     /// </summary>
-    /// <param name="index">Значение входа в десятичном представлении</param>
-    /// <returns>Значение функции в строковом представлении</returns>
+    /// <param name="index">The value of the input in decimal representation</param>
+    /// <returns>The value of the function in the string representation</returns>
     public string getStringResult(int index)
     {
         return string.Join("", getVectorResult(index).Select(b => b ? '1' : '0'));
@@ -137,23 +136,23 @@ public class SBox
     //=================================================================================================================
 
     /// <summary>
-    /// Генерирует все возможные перестановки 0 и 1 в векторном виде длниы variables
+    /// Generates all possible permutations of 0 and 1 in vector form of length variables
     /// </summary>
-    /// <param name="variables">Число переменных функции, длина векторов перестановок</param>
-    /// <returns>Двумерный массив всех возможных перестановок 0 и 1</returns>
+    /// <param name="variables">The number of variables of the function, the length of the permutation vectors</param>
+    /// <returns>A two-dimensional array of all possible permutations of 0 and 1</returns>
     public static bool[][] GenerateBooleanArrayFromPermutations(int variables)
     {
-        int rows = (int)Math.Pow(2, variables); // Вычисляем количество строк
-        bool[][] result = new bool[rows][]; // Создаем двумерный массив
+        int rows = (int)Math.Pow(2, variables); // Calculating the number of rows
+        bool[][] result = new bool[rows][]; // Creating a two-dimensional array
 
-        // Генерируем все возможные перестановки
+        // Generating all possible permutations
         for (int i = 0; i < rows; i++)
         {
             result[i] = new bool[variables];
-            string binaryString = Convert.ToString(i, 2).PadLeft(variables, '0'); // Получаем бинарную строку
+            string binaryString = Convert.ToString(i, 2).PadLeft(variables, '0'); // We get a binary string
             for (int j = 0; j < variables; j++)
             {
-                result[i][j] = binaryString[j] == '1'; // Добавляем в массив
+                result[i][j] = binaryString[j] == '1'; // Adding to the array
             }
         }
 
@@ -161,26 +160,26 @@ public class SBox
     }
 
     /// <summary>
-    /// Генерирует массив булевых векторов по массиву строк
+    /// Generates an array of Boolean vectors based on an array of strings
     /// </summary>
-    /// <param name="binaryStrings">Строки, представляющие собой булевый вектор и состоящие из 0 и 1 без пробелов</param>
-    /// <returns>Двумерный булевый массив</returns>
+    /// <param name="binaryStrings">Strings representing a Boolean vector and consisting of 0 and 1 without spaces</param>
+    /// <returns>Two-dimensional Boolean array</returns>
     public static bool[][] GenerateBooleanArrayFromStrings(string[] binaryStrings)
     {
-        // Определяем количество строк и столбцов
+        // Determine the number of rows and columns
         int rows = binaryStrings.Length;
         int cols = binaryStrings[0].Length;
 
-        // Создаем двумерный булевый массив
+        // Creating a two-dimensional Boolean array
         bool[][] result = new bool[rows][];
 
-        // Заполняем массив значениями из строк
+        // Filling the array with values from the strings
         for (int i = 0; i < rows; i++)
         {
             result[i] = new bool[cols];
             for (int j = 0; j < cols; j++)
             {
-                result[i][j] = binaryStrings[i][j] == '1'; // Присваиваем true если '1', иначе false
+                result[i][j] = binaryStrings[i][j] == '1'; // Assign true if '1', otherwise false
             }
         }
 
@@ -188,21 +187,21 @@ public class SBox
     }
 
     /// <summary>
-    /// Переводит булевый вектор в соответствующее числовое значение
+    /// Converts a Boolean vector to the corresponding numeric value
     /// </summary>
-    /// <param name="boolArray">Булевый массив</param>
-    /// <returns>Десятичное представление булевого массива</returns>
+    /// <param name="boolArray">Boolean array</param>
+    /// <returns>Decimal representation of a Boolean array</returns>
     public static int ConvertBooleanArrayToDecimal(bool[] boolArray)
     {
         int decimalValue = 0;
 
-        // Перебираем массив
+        // Iterating through the array
         for (int i = 0; i < boolArray.Length; i++)
         {
-            // Если элемент true, добавляем соответствующую степень двойки к результату
+            // If the element is true, add the corresponding power of two to the result
             if (boolArray[i])
             {
-                decimalValue += (1 << (boolArray.Length - 1 - i)); // Бит сдвига
+                decimalValue += (1 << (boolArray.Length - 1 - i)); // Shift bit
             }
         }
 
@@ -210,7 +209,7 @@ public class SBox
     }
 
     /// <summary>
-    /// Разделяет массив на split_count почти равных частей
+    /// Splits the array into split_count of almost equal parts
     /// </summary>
     private static Node[][] SplitArray(Node[] array, int split_count)
     {
@@ -218,10 +217,10 @@ public class SBox
             throw new ArgumentException($"split_count must be grater than 0, {split_count} <= 0");
 
         int totalLength = array.Length;
-        int partLength = totalLength / split_count; // Длина каждой части
-        int remainder = totalLength % split_count; // Остаток
+        int partLength = totalLength / split_count; // The length of each part
+        int remainder = totalLength % split_count; // Remains
 
-        // Разделение массива с использованием LINQ
+        // Splitting an array using LINQ
         return Enumerable.Range(0, split_count)
                          .Select(i => array.Skip(i * partLength).Take(partLength + (i == split_count - 1 ? remainder : 0)).ToArray())
                          .ToArray();
@@ -243,7 +242,7 @@ public class SBox
             {
                 var input_diff = Node.GetDiff(_input[i], _input[j]);
                 var output_diff = Node.GetDiff(_output[i], _output[j]);
-                // 2 из-за зеркального характера вычислений при j=i
+                // 2 due to the mirrored nature of calculations at j=i
                 _differentialCharacteristic.IncrementDifference(input_diff, output_diff, 2);
             }
         }
@@ -259,7 +258,7 @@ public class SBox
         var splitted_input = SplitArray(_input, threads);
         var result = new SBox[threads];
 
-        // Параллельный вывод массивов
+        // Parallel output of arrays
         Parallel.For(0, splitted_input.Length, i =>
         {
             var sbox = new SBox(this, splitted_input[i]);
@@ -287,24 +286,24 @@ public class SBox
     //=================================================================================================================
 
     /// <summary>
-    /// Класс, представляющий собой булевый вектор в S box
+    /// A class representing a Boolean vector in the S box
     /// </summary>
     public class Node
     {
         /// <summary>
-        /// Десятичное представление булевого вектора
+        /// Decimal representation of a Boolean vector
         /// </summary>
         public int decimalNumber { get; set; }
 
         /// <summary>
-        /// Булевый вектор
+        /// Boolean vector
         /// </summary>
         public bool[] booleanArray { get; set; }
 
         /// <summary>
-        /// Базовый конструктор класса
+        /// Basic Class Constructor
         /// </summary>
-        /// <param name="_booleanArray">Булевый массив</param>
+        /// <param name="_booleanArray">Boolean array</param>
         public Node(bool[] _booleanArray)
         {
             booleanArray = _booleanArray;
@@ -312,10 +311,10 @@ public class SBox
         }
 
         /// <summary>
-        /// Конвертирует двумерный булевый массив в массив класса Node
+        /// Converts a two-dimensional Boolean array to an array of the Node class
         /// </summary>
-        /// <param name="input">Двумерный булевый массив</param>
-        /// <returns>Массив класса Node</returns>
+        /// <param name="input">Two-dimensional Boolean array</param>
+        /// <returns>Array of the Node class</returns>
         public static Node[] ConvertBooleanArrayToNode(bool[][] input)
         {
             Node[] result = new Node[input.Length];
@@ -343,25 +342,25 @@ public class SBox
     //=================================================================================================================
 
     /// <summary>
-    /// Класс, представляющий собой разностные характеристики S box, а также возможности по вычислению этих характеристик
+    /// A class representing the difference characteristics of the S box, as well as the possibilities for calculating these characteristics
     /// </summary>
     public class DifferentialCharacteristic
     {
 
         /// <summary>
-        /// Двумерный массив с разностынми характеристиками
+        /// A two-dimensional array with difference characteristics
         /// </summary>
         public int[][] differentialCharacteristic { get; private set; }
 
         /// <summary>
-        /// Число символов для выравнивания строкового представления массива
+        /// The number of characters to align the string representation of the array
         /// </summary>
         private int padLength;
 
         /// <summary>
-        /// Инициализация пустого массива разностных характеристик
+        /// Initializing an empty array of difference characteristics
         /// </summary>
-        /// <param name="variable_count">Число епеременных булевой функции</param>
+        /// <param name="variable_count">The number of variables of a Boolean function</param>
         public DifferentialCharacteristic(int variable_count)
         {
             var length = (int)Math.Pow(2, variable_count);
@@ -371,7 +370,7 @@ public class SBox
                 differentialCharacteristic[i] = new int[length];
             }
 
-            // +1 из-за использования разделителя
+            // +1 due to the use of a separator
             padLength = СountDigits(length) + 1;
         }
 
@@ -381,9 +380,9 @@ public class SBox
         }
 
         /// <summary>
-        /// Представляет двумерный массив в человекочитаемом виде
+        /// Represents a two-dimensional array in human-readable form
         /// </summary>
-        /// <returns>Строковое представление двумерного массива</returns>
+        /// <returns>String representation of a two-dimensional array</returns>
         public void WriteToFile(string path, int buffer)
         {
             MatrixFormatter.FormatMatrix(differentialCharacteristic, padLength, path, buffer);
@@ -391,16 +390,16 @@ public class SBox
 
         private static int СountDigits(int number)
         {
-            // Приводим число к положительному значению
+            // We bring the number to a positive value
             number = Math.Abs(number);
 
-            // Проверка, является ли число нулем
+            // Checking whether the number is zero
             if (number == 0)
             {
-                return 1; // Если число равно нулю, то цифр 1
+                return 1; // If the number is zero, then the digits are 1
             }
 
-            // Используем логарифм для подсчета количества целых цифр
+            // We use the logarithm to count the number of integers
             return (int)Math.Floor(Math.Log10(number)) + 1;
         }
 

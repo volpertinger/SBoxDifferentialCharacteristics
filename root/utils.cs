@@ -1,23 +1,18 @@
 using System.Text;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
 
 /// <summary>
-/// Класс для форматирования двумерных массивов
+/// A class for formatting two-dimensional arrays
 /// </summary>
 public static class MatrixFormatter
 {
 
     /// <summary>
-    /// Returns matrix in string format
+    /// Returns a matrix in string format
     /// </summary>
     public static void FormatMatrix(int[][] matrix, int padding, string path, int buffer)
     {
 
-        // Запись строки в файл с помощью StreamWriter
+        // Writing a line to a file using StreamWriter
         using (StreamWriter writer = new StreamWriter(path))
         {
             if (matrix == null || matrix.Length == 0 || matrix[0].Length == 0)
@@ -31,15 +26,15 @@ public static class MatrixFormatter
 
             StringBuilder result = new StringBuilder();
 
-            // Печатаем верхний разделитель
+            // We print the upper separator
             PrintDelimiter(result, numCols, padding);
             result.AppendLine();
-            // Печатаем индексы столбцов
+            // Printing column indexes
             PrintColumnIndices(result, numCols, padding);
             writer.WriteLine(result.ToString());
             result.Clear();
 
-            // Печатаем каждую строку матрицы с индексами строк
+            // We print each row of the matrix with row indexes
             for (int i = 0; i < numRows; i++)
             {
                 result.Append($"{i.ToString().PadLeft(padding)}|");
@@ -55,7 +50,7 @@ public static class MatrixFormatter
                 }
             }
 
-            // Печатаем нижний разделитель
+            // We print the bottom separator
             PrintDelimiter(result, numCols, padding);
             writer.Write(result);
             return;
@@ -68,12 +63,12 @@ public static class MatrixFormatter
     /// </summary>
     private static void PrintDelimiter(StringBuilder result, int numCols, int padding)
     {
-        result.Append(new string('-', padding)); // Печатаем отступ
+        result.Append(new string('-', padding)); // We print the indentation
         result.Append("+");
 
         for (int j = 0; j < numCols; j++)
         {
-            result.Append(new string('-', padding)); // Печатаем ячейки разделителя
+            result.Append(new string('-', padding)); // Printing the separator cells
             result.Append("+");
         }
     }
@@ -103,23 +98,23 @@ public static class MatrixFormatter
 
 
 /// <summary>
-/// Генерация S box
+/// S box generation
 /// </summary>
 public static class PermutationsGenerator
 {
     public static void generate(string path, int length)
     {
-        // Генерация всех возможных перестановок
+        // Generating all possible permutations
         List<string> permutations = GenerateBinaryPermutations(length);
 
-        // Перемешивание перестановок
+        // Shuffling permutations
         Random rand = new Random();
         var shuffledPermutations = permutations.OrderBy(x => rand.Next()).ToList();
 
-        // Запись в файл
+        // Writing to a file
         File.WriteAllLines(path, shuffledPermutations);
 
-        Console.WriteLine($"Перестановки записаны в файл: {path}");
+        Console.WriteLine($"The permutations are written to a file: {path}");
     }
 
     static List<string> GenerateBinaryPermutations(int length)
@@ -129,7 +124,7 @@ public static class PermutationsGenerator
 
         for (int i = 0; i < totalPerms; i++)
         {
-            // Генерация двоичной строки
+            // Generating a binary string
             string binaryString = Convert.ToString(i, 2).PadLeft(length, '0');
             result.Add(binaryString);
         }

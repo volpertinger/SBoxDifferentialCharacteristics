@@ -1,5 +1,5 @@
 /// <summary>
-/// Суть программы: подсчет разностных характеристик S блока последовательным и параллельным алгоритмами
+/// The essence of the program: calculation of the difference characteristics of the S box by sequential and parallel algorithms
 /// </summary>
 class Program
 {
@@ -7,18 +7,18 @@ class Program
     {
         try
         {
-            // Замер времени выполнения
+            // Measuring the execution time
             var watch = new ExecutionWatch();
             watch.allProgram.Start();
 
-            // Чтение конфигурации
+            // Reading the configuration
             var settings = new Settings("root/settings.conf");
 
-            // Создание логгера
+            // Creating a logger
             Logger logger = new Logger(settings.logToConsole, settings.logToFile, settings.logPath);
             logger.LogInfo($"Start\n{settings.ToString()}\n");
 
-            // Чтение входных данных
+            // Reading the input data
             watch.inputPreparation.Start();
             if (settings.generatePermutations)
             {
@@ -27,18 +27,17 @@ class Program
             string[] inputs = File.ReadAllLines(settings.inputPath);
             watch.inputPreparation.Stop();
 
-            // Проверка входных данных на корректность
+            // Checking the input data for correctness
             watch.inputCheck.Start();
             if (!Validator.isInputCorrect(inputs, settings, logger)) { return; }
             watch.inputCheck.Stop();
 
-            // Создание SBox
+            // Creating an SBox
             watch.inputPreparation.Start();
             SBox sbox = new SBox(inputs, settings.variableCount);
             watch.inputPreparation.Stop();
 
-            // Вычисление разностных характеристик
-
+            // Calculation of difference characteristics
 
             if (settings.calculateDifferentialCharacteristicsSequential)
             {
@@ -64,7 +63,7 @@ class Program
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Произошла ошибка: {ex.Message}");
+            Console.WriteLine($"An error has occurred: {ex.Message}");
         }
     }
 }
