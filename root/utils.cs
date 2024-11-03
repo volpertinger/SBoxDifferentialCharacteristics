@@ -30,7 +30,7 @@ public static class MatrixFormatter
             result.Append($"{i.ToString().PadLeft(padding)}|");
             for (int j = 0; j < numCols; j++)
             {
-                result.Append($"{matrix[i][j].ToString().PadLeft(padding)}|");
+                result.Append($"{matrix[i][j].ToString().PadLeft(padding)}:");
             }
             result.AppendLine();
         }
@@ -63,14 +63,19 @@ public static class MatrixFormatter
     /// </summary>
     private static void PrintColumnIndices(StringBuilder result, int numCols, int padding)
     {
-        result.Append(new string(' ', padding)); // Печатаем отступ перед индексацией
-        result.Append("|");
+        result.Append("dy|");
 
         for (int j = 0; j < numCols; j++)
         {
             result.Append($"{j.ToString().PadLeft(padding)}|");
         }
 
+        result.Append("\ndx|");
+        for (int j = 0; j < numCols; j++)
+        {
+            result.Append($"{" ".PadLeft(padding)}|");
+        }
         result.AppendLine();
+        PrintDelimiter(result, numCols, padding);
     }
 }
