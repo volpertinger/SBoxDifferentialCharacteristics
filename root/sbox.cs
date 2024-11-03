@@ -164,7 +164,6 @@ public class SBox
             result[i] = new bool[cols];
             for (int j = 0; j < cols; j++)
             {
-                var ss = binaryStrings[i][j];
                 result[i][j] = binaryStrings[i][j] == '1'; // Присваиваем true если '1', иначе false
             }
         }
@@ -200,13 +199,15 @@ public class SBox
 
     public void calculateDifferentialCharacteristicsSequential()
     {
+        _differentialCharacteristic.differentialCharacteristic[0][0] = _input.Length;
         for (int i = 0; i < _input.Length; ++i)
         {
-            for (int j = 0; j < _input.Length; ++j)
+            for (int j = i + 1; j < _input.Length; ++j)
             {
                 var input_diff = Node.GetDiff(_input[i], _input[j]);
                 var output_diff = Node.GetDiff(_output[i], _output[j]);
-                _differentialCharacteristic.IncrementDifference(input_diff, output_diff);
+                // 2 из-за зеркального характера вычислений при j=i
+                _differentialCharacteristic.IncrementDifference(input_diff, output_diff, 2);
             }
         }
         return;
@@ -307,12 +308,13 @@ public class SBox
                 differentialCharacteristic[i] = new int[length];
             }
 
-            padLength = СountDigits(length);
+            // +1 из-за использования разделителя
+            padLength = СountDigits(length) + 1;
         }
 
-        public void IncrementDifference(int input_diff, int output_diff)
+        public void IncrementDifference(int input_diff, int output_diff, int value = 1)
         {
-            differentialCharacteristic[input_diff][output_diff] += 1;
+            differentialCharacteristic[input_diff][output_diff] += value;
         }
 
         /// <summary>

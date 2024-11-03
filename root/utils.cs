@@ -63,14 +63,15 @@ public static class MatrixFormatter
     /// </summary>
     private static void PrintColumnIndices(StringBuilder result, int numCols, int padding)
     {
-        result.Append("dy|");
+        result.Append($"{"dy".PadLeft(padding)}|");
 
         for (int j = 0; j < numCols; j++)
         {
             result.Append($"{j.ToString().PadLeft(padding)}|");
-        }
+        }   
 
-        result.Append("\ndx|");
+        result.AppendLine();
+        result.Append($"{"dx".PadLeft(padding)}|");
         for (int j = 0; j < numCols; j++)
         {
             result.Append($"{" ".PadLeft(padding)}|");
