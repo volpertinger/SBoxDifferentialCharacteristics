@@ -1,5 +1,6 @@
 using System.IO;
 using System.Configuration;
+using System.ComponentModel;
 
 /// <summary>
 /// Представление необходимых параметров в виде класса
@@ -43,6 +44,21 @@ public class Settings
     public bool logToFile { get; private set; }
 
     /// <summary>
+    /// Флаг для помледовательного вычисления разностных характеристик S Box
+    /// </summary>
+    public bool calculateDifferentialCharacteristicsSequential { get; private set; }
+
+    /// <summary>
+    /// Флаг для параллельного вычисления разностных характеристик S Box
+    /// </summary>
+    public bool calculateDifferentialCharacteristicsParallel { get; private set; }
+
+    /// <summary>
+    /// Количество потоков для параллельной работы алгоритма
+    /// </summary>
+    public int threadsCount { get; private set; }
+
+    /// <summary>
     /// Базовый конструктор, который берет данные из файла, расположенного по пути path
     /// </summary>
     /// <param name="path">Путь файла с настройками</param>
@@ -59,5 +75,8 @@ public class Settings
         possibleInputsCount = (int)Math.Pow(2, variableCount);
         logToConsole = bool.Parse(settings["log_to_console"]);
         logToFile = bool.Parse(settings["log_to_file"]);
+        calculateDifferentialCharacteristicsSequential = bool.Parse(settings["calculate_differential_characteristics_sequential"]);
+        calculateDifferentialCharacteristicsParallel = bool.Parse(settings["calculate_differential_characteristics_parallel"]);
+        threadsCount = int.Parse(settings["threads_count"]);
     }
 }

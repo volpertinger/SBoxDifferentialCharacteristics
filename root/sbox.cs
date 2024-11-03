@@ -10,14 +10,16 @@ public class SBox
     private Node[] _output;
 
     /// <summary>
-    /// Ичсло переменных функции
+    /// Число переменных функции
     /// </summary>
     private int _variable_count;
 
     /// <summary>
-    /// Массив возможноых входных векторов функции
+    /// Массив возможных входных векторов функции
     /// </summary>
     private Node[] _input;
+
+    private DifferentialCharacteristic _differentialCharacteristic;
 
     //=================================================================================================================
     // Constructors
@@ -40,6 +42,9 @@ public class SBox
         // Конвертация булевых массивов в массива класса Node
         _output = Node.ConvertBooleanArrayToNode(output_array);
         _input = Node.ConvertBooleanArrayToNode(input_array);
+
+        // Инициализация пустых разностных характеристик
+        _differentialCharacteristic = new DifferentialCharacteristic(variable_count);
     }
 
 
@@ -104,6 +109,11 @@ public class SBox
     public string getStringResult(int index)
     {
         return string.Join("", getVectorResult(index).Select(b => b ? '1' : '0'));
+    }
+
+    public DifferentialCharacteristic GetDifferentialCharacteristic()
+    {
+        return _differentialCharacteristic;
     }
 
     //=================================================================================================================
@@ -185,6 +195,21 @@ public class SBox
     }
 
     //=================================================================================================================
+    // Differential Characteristics Calculation
+    //=================================================================================================================
+
+    public void calculateDifferentialCharacteristicsSequential()
+    {
+        return;
+    }
+
+    public void calculateDifferentialCharacteristicsParallel(int threads)
+    {
+        return;
+    }
+
+
+    //=================================================================================================================
     // Node
     //=================================================================================================================
 
@@ -227,6 +252,78 @@ public class SBox
             }
             return result;
         }
+
+        public static int GetDiff(Node lhs, Node rhs)
+        {
+            int result = 0;
+            for (int i = 0; i < lhs.booleanArray.Length; ++i)
+            {
+                result += (lhs.booleanArray[i] ^ rhs.booleanArray[i]) ? 1 : 0;
+            }
+            return result;
+        }
+    }
+
+    //=================================================================================================================
+    // Differential Characteristics
+    //=================================================================================================================
+
+    /// <summary>
+    /// Класс, представляющий собой разностные характеристики S box, а также возможности по вычислению этих характеристик
+    /// </summary>
+    public class DifferentialCharacteristic
+    {
+
+        /// <summary>
+        /// Двумерный массив с разностынми характеристиками
+        /// </summary>
+        public int[][] differentialCharacteristic { get; private set; }
+
+        /// <summary>
+        /// Число символов для выравнивания строкового представления массива
+        /// </summary>
+        private int padLength;
+
+        /// <summary>
+        /// Инициализация пустого массива разностных характеристик
+        /// </summary>
+        /// <param name="variable_count">Число епеременных булевой функции</param>
+        public DifferentialCharacteristic(int variable_count)
+        {
+            var length = (int)Math.Pow(2, variable_count);
+            differentialCharacteristic = new int[length][];
+            for (int i = 0; i < length; ++i)
+            {
+                differentialCharacteristic[i] = new int[length];
+            }
+
+            padLength = СountDigits(length);
+        }
+
+        /// <summary>
+        /// Представляет двумерный массив в человекочитаемом виде
+        /// </summary>
+        /// <returns>Строковое представление двумерного массива</returns>
+        public override string ToString()
+        {
+            return MatrixFormatter.FormatMatrix(differentialCharacteristic, padLength);
+        }
+
+        private static int СountDigits(int number)
+        {
+            // Приводим число к положительному значению
+            number = Math.Abs(number);
+
+            // Проверка, является ли число нулем
+            if (number == 0)
+            {
+                return 1; // Если число равно нулю, то цифр 1
+            }
+
+            // Используем логарифм для подсчета количества целых цифр
+            return (int)Math.Floor(Math.Log10(number)) + 1;
+        }
+
     }
 
 }

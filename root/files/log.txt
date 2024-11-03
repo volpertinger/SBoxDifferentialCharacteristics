@@ -19,3 +19,42 @@ Execution time [inputCheck]: 0.0005074 seconds
 Execution time [inputPreparation]: 0.0005184 seconds
 Execution time [mainAlgorithm]: 0.0011564 seconds
 
+11/3/2024 3:09:23 PM: INFO: Start
+11/3/2024 3:09:23 PM: INFO: 
+Execution time [allProgram]: 0.024553 second
+Execution time [inputCheck]: 0.0005391 seconds
+Execution time [inputPreparation]: 0.0009277 seconds
+Execution time [mainAlgorithm]: 0.0011873 seconds
+
+11/3/2024 4:31:55 PM: INFO: Start
+11/3/2024 4:31:55 PM: INFO: 
+Execution time [allProgram]: 0.0911037 second
+Execution time [inputCheck]: 0.0005456 seconds
+Execution time [inputPreparation]: 0.0008344 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0 seconds
+
+11/3/2024 4:41:25 PM: INFO: Start
+11/3/2024 4:41:25 PM: INFO: 
+Execution time [allProgram]: 0.026233 second
+Execution time [inputCheck]: 0.0006003 seconds
+Execution time [inputPreparation]: 0.0009786 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0 seconds
+
+11/3/2024 4:42:20 PM: INFO: Start
+11/3/2024 4:42:20 PM: INFO: 
+Execution time [allProgram]: 0.0248838 second
+Execution time [inputCheck]: 0.0005391 seconds
+Execution time [inputPreparation]: 0.0008319 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0 seconds
+
+11/3/2024 4:43:27 PM: INFO: Start
+11/3/2024 4:43:27 PM: INFO: 
+Execution time [allProgram]: 0.0272243 second
+Execution time [inputCheck]: 0.0005978 seconds
+Execution time [inputPreparation]: 0.0008326 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0 seconds
+

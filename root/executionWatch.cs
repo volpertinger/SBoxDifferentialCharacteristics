@@ -12,9 +12,14 @@ public class ExecutionWatch
     public Stopwatch allProgram { get; private set; }
 
     /// <summary>
-    /// Расчет времени выполнения основного алгоритма
+    /// Расчет времени выполнения последовательного алгоритма
     /// </summary>
-    public Stopwatch mainAlgorithm { get; private set; }
+    public Stopwatch sequentialAlgorithm { get; private set; }
+
+    /// <summary>
+    /// Расчет времени выполнения параллельного алгоритма
+    /// </summary>
+    public Stopwatch parallelAlgorithm { get; private set; }
 
     /// <summary>
     /// Расчет времени проверки корректности входных данных
@@ -32,9 +37,20 @@ public class ExecutionWatch
     public void StopAll()
     {
         allProgram.Stop();
-        mainAlgorithm.Stop();
         inputCheck.Stop();
         inputPreparation.Stop();
+        sequentialAlgorithm.Stop();
+        parallelAlgorithm.Stop();
+    }
+
+    public override string ToString()
+    {
+
+        return $"\nExecution time [allProgram]: {allProgram.Elapsed.TotalSeconds} second\n" +
+        $"Execution time [inputCheck]: {inputCheck.Elapsed.TotalSeconds} seconds\n" +
+        $"Execution time [inputPreparation]: {inputPreparation.Elapsed.TotalSeconds} seconds\n" +
+        $"Execution time [sequentialAlgorithm]: {sequentialAlgorithm.Elapsed.TotalSeconds} seconds\n" +
+        $"Execution time [parallelAlgorithm]: {parallelAlgorithm.Elapsed.TotalSeconds} seconds\n";
     }
 
     /// <summary>
@@ -43,8 +59,9 @@ public class ExecutionWatch
     public ExecutionWatch()
     {
         allProgram = new Stopwatch();
-        mainAlgorithm = new Stopwatch();
         inputCheck = new Stopwatch();
         inputPreparation = new Stopwatch();
+        sequentialAlgorithm = new Stopwatch();
+        parallelAlgorithm = new Stopwatch();
     }
 }

@@ -39,24 +39,27 @@ class Program
             SBox sbox = new SBox(inputs, settings.variableCount);
             watch.inputPreparation.Stop();
 
-            // Запись результатов в выходной файл
-            watch.mainAlgorithm.Start();
-            var results = new string[settings.possibleInputsCount];
+            // Вычисление разностных характеристик
 
-            for (int i = 0; i < settings.possibleInputsCount; i++)
+            var results = new string[2];
+
+            if (settings.calculateDifferentialCharacteristicsSequential)
             {
-                var ss = sbox.getVectorResult(i);
-                results[i] = sbox.getStringResult(i);
+                sbox.calculateDifferentialCharacteristicsSequential();
+                results[0] = sbox.GetDifferentialCharacteristic().ToString();
             }
 
+            if (settings.calculateDifferentialCharacteristicsParallel)
+            {
+                sbox.calculateDifferentialCharacteristicsParallel(settings.threadsCount);
+                results[1] = sbox.GetDifferentialCharacteristic().ToString();
+            }
+
+            // Запись результатов в выходной файл
             File.WriteAllLines(settings.outputPath, results);
 
             watch.StopAll();
-            logger.LogInfo($"\nExecution time [allProgram]: {watch.allProgram.Elapsed.TotalSeconds} second\n" +
-            $"Execution time [inputCheck]: {watch.inputCheck.Elapsed.TotalSeconds} seconds\n" +
-            $"Execution time [inputPreparation]: {watch.inputPreparation.Elapsed.TotalSeconds} seconds\n" +
-            $"Execution time [mainAlgorithm]: {watch.mainAlgorithm.Elapsed.TotalSeconds} seconds\n"
-            );
+            logger.LogInfo(watch.ToString());
 
         }
         catch (Exception ex)
