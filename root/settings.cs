@@ -1,7 +1,3 @@
-using System.IO;
-using System.Configuration;
-using System.ComponentModel;
-
 /// <summary>
 /// Представление необходимых параметров в виде класса
 /// </summary>

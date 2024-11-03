@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-
 /// <summary>
 /// Простоей логгер, написанный для нужд основной программы
 /// </summary>

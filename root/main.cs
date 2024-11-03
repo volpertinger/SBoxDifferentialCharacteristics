@@ -1,9 +1,3 @@
-using System;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
-using System.Diagnostics;
-
 /// <summary>
 /// Суть программы: подсчет разностных характеристик S блока последовательным и параллельным алгоритмами
 /// </summary>
