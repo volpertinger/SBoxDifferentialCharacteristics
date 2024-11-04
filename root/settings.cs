@@ -5,69 +5,69 @@ public class Settings
 {
 
     /// <summary>
-    /// The path to the login file
+    /// The path to the input file
     /// </summary>
-    public string inputPath { get; private set; }
+    public string InputPath { get; private set; }
 
     /// <summary>
     /// The path to the output file
     /// </summary>
-    public string outputPath { get; private set; }
+    public string OutputPath { get; private set; }
 
     /// <summary>
-    /// Flag of the need to record the result
+    /// Flag of the need to write the result to output file
     /// </summary>
-    public bool isNeedToWriteResult { get; private set; }
+    public bool IsNeedToWriteResult { get; private set; }
 
     /// <summary>
-    /// The path to the log file
+    /// The path to the file with logs to write them
     /// </summary>
-    public string logPath { get; private set; }
+    public string LogPath { get; private set; }
 
     /// <summary>
-    /// Number of variables
+    /// Number of boolean function variables
     /// </summary>
-    public int variableCount { get; private set; }
+    public int VariableCount { get; private set; }
 
     /// <summary>
-    /// The number of possible input vectors
+    /// The number of boolean function inputs
     /// </summary>
-    public int possibleInputsCount { get; private set; }
+    public int InputsCount { get; private set; }
 
     /// <summary>
     /// Flag for writing logs to the console
     /// </summary>
-    public bool logToConsole { get; private set; }
+    public bool LogToConsole { get; private set; }
 
     /// <summary>
     /// Flag for writing logs to a file
     /// </summary>
-    public bool logToFile { get; private set; }
+    public bool LogToFile { get; private set; }
 
     /// <summary>
     /// Flag for sequential calculation of the difference characteristics of the S Box
     /// </summary>
-    public bool calculateDifferentialCharacteristicsSequential { get; private set; }
+    public bool CalculateSequential { get; private set; }
 
     /// <summary>
     /// Flag for parallel calculation of the difference characteristics of the S Box
     /// </summary>
-    public bool calculateDifferentialCharacteristicsParallel { get; private set; }
+    public bool CalculateParallel { get; private set; }
 
     /// <summary>
     /// The number of threads for parallel operation of the algorithm
     /// </summary>
-    public int threadsCount { get; private set; }
+    public int ThreadsCount { get; private set; }
 
     /// <summary>
     /// A flag for generating the S box and writing to the output Path instead of reading from there
     /// </summary>
-    public bool generatePermutations { get; private set; }
+    public bool GenerateFunction { get; private set; }
 
     /// <summary>
-    /// The size of the buffer to write to the file
+    /// The size of the buffer to write to the output file
     /// </summary>
-    public int writeBuffer { get; private set; }
+    public int WriteBuffer { get; private set; }
 
     /// <summary>
     /// A basic constructor that takes data from a file located on the path
@@ -79,26 +79,26 @@ public class Settings
                                 .Select(line => line.Split('='))
                                 .ToDictionary(parts => parts[0].Trim(), parts => parts[1].Trim());
 
-        inputPath = settings["input_file"];
-        outputPath = settings["output_file"];
-        isNeedToWriteResult = logToFile = bool.Parse(settings["is_need_to_write_result"]);
-        logPath = settings["log_file"];
-        variableCount = int.Parse(settings["variable_count"]);
-        possibleInputsCount = (int)Math.Pow(2, variableCount);
-        logToConsole = bool.Parse(settings["log_to_console"]);
-        logToFile = bool.Parse(settings["log_to_file"]);
-        calculateDifferentialCharacteristicsSequential = bool.Parse(settings["calculate_differential_characteristics_sequential"]);
-        calculateDifferentialCharacteristicsParallel = bool.Parse(settings["calculate_differential_characteristics_parallel"]);
-        threadsCount = int.Parse(settings["threads_count"]);
-        generatePermutations = bool.Parse(settings["generate_permutations"]);
-        writeBuffer = int.Parse(settings["write_buffer"]);
+        InputPath = settings["input_file"];
+        OutputPath = settings["output_file"];
+        IsNeedToWriteResult = LogToFile = bool.Parse(settings["is_need_to_write_result"]);
+        LogPath = settings["log_file"];
+        VariableCount = int.Parse(settings["variable_count"]);
+        InputsCount = (int)Math.Pow(2, VariableCount);
+        LogToConsole = bool.Parse(settings["log_to_console"]);
+        LogToFile = bool.Parse(settings["log_to_file"]);
+        CalculateSequential = bool.Parse(settings["calculate_sequential"]);
+        CalculateParallel = bool.Parse(settings["calculate_parallel"]);
+        ThreadsCount = int.Parse(settings["threads_count"]);
+        GenerateFunction = bool.Parse(settings["generate_function"]);
+        WriteBuffer = int.Parse(settings["write_buffer"]);
     }
 
     public override string ToString()
     {
-        return $"variables: {variableCount}; inputs: {possibleInputsCount};\n" +
-        $"calculate sequential: {calculateDifferentialCharacteristicsSequential};\n" +
-        $"calculate parallel: {calculateDifferentialCharacteristicsParallel}; threads: {threadsCount};\n" +
-        $"permutations generation: {generatePermutations};";
+        return $"variables: {VariableCount}; inputs: {InputsCount};\n" +
+        $"calculate sequential: {CalculateSequential};\n" +
+        $"calculate parallel: {CalculateParallel}; threads: {ThreadsCount};\n" +
+        $"function generation: {GenerateFunction};";
     }
 }

@@ -7,22 +7,22 @@ public class SBox
     /// <summary>
     /// Array of function values
     /// </summary>
-    private Node[] _output;
+    private readonly Node[] _output;
 
     /// <summary>
     /// Array of possible input vectors of the function
     /// </summary>
-    private Node[] _input;
+    private readonly Node[] _input;
 
     /// <summary>
     /// Number of function variables
     /// </summary>
-    private int _variable_count;
+    private readonly int _variable_count;
 
     /// <summary>
     /// Differential characteristics
     /// </summary>
-    private DifferentialCharacteristic _differentialCharacteristic;
+    private readonly DifferentialCharacteristic _differentialCharacteristic;
 
     //=================================================================================================================
     // Constructors
@@ -118,17 +118,17 @@ public class SBox
     /// <returns>A two-dimensional array of all possible permutations of 0 and 1</returns>
     public static bool[][] GenerateBooleanArrayFromPermutations(int variables)
     {
-        int rows = (int)Math.Pow(2, variables); // Calculating the number of rows
-        bool[][] result = new bool[rows][]; // Creating a two-dimensional array
+        int rows = (int)Math.Pow(2, variables);
+        bool[][] result = new bool[rows][];
 
         // Generating all possible permutations
         for (int i = 0; i < rows; i++)
         {
             result[i] = new bool[variables];
-            string binaryString = Convert.ToString(i, 2).PadLeft(variables, '0'); // We get a binary string
+            string binaryString = Convert.ToString(i, 2).PadLeft(variables, '0');
             for (int j = 0; j < variables; j++)
             {
-                result[i][j] = binaryString[j] == '1'; // Adding to the array
+                result[i][j] = binaryString[j] == '1';
             }
         }
 
@@ -142,11 +142,8 @@ public class SBox
     /// <returns>Two-dimensional Boolean array</returns>
     public static bool[][] GenerateBooleanArrayFromStrings(string[] binaryStrings)
     {
-        // Determine the number of rows and columns
         int rows = binaryStrings.Length;
         int cols = binaryStrings[0].Length;
-
-        // Creating a two-dimensional Boolean array
         bool[][] result = new bool[rows][];
 
         // Filling the array with values from the strings
@@ -155,7 +152,7 @@ public class SBox
             result[i] = new bool[cols];
             for (int j = 0; j < cols; j++)
             {
-                result[i][j] = binaryStrings[i][j] == '1'; // Assign true if '1', otherwise false
+                result[i][j] = binaryStrings[i][j] == '1';
             }
         }
 
@@ -171,13 +168,11 @@ public class SBox
     {
         int decimalValue = 0;
 
-        // Iterating through the array
         for (int i = 0; i < boolArray.Length; i++)
         {
-            // If the element is true, add the corresponding power of two to the result
             if (boolArray[i])
             {
-                decimalValue += (1 << (boolArray.Length - 1 - i)); // Shift bit
+                decimalValue += (1 << (boolArray.Length - 1 - i));
             }
         }
 
@@ -209,7 +204,7 @@ public class SBox
     /// <summary>
     /// Calculates differential characteristics of S Box sequential
     /// </summary>
-    public void calculateDifferentialCharacteristicsSequential()
+    public void CalculateDifferentialCharacteristicsSequential()
     {
         _differentialCharacteristic.Matrix[0][0] = _input.Length;
         for (int i = 0; i < _input.Length; ++i)
@@ -229,7 +224,7 @@ public class SBox
     /// Calculates differential characteristics of S Box parallel
     /// </summary>
     /// <param name="threads">Threads count</param>
-    public void calculateDifferentialCharacteristicsParallel(int threads)
+    public void CalculateDifferentialCharacteristicsParallel(int threads)
     {
         var splitted_input = SplitArray(_input, threads);
         var result = new SBox[threads];
@@ -238,7 +233,7 @@ public class SBox
         Parallel.For(0, splitted_input.Length, i =>
         {
             var sbox = new SBox(this, splitted_input[i]);
-            sbox.calculateDifferentialCharacteristicsSequential();
+            sbox.CalculateDifferentialCharacteristicsSequential();
             result[i] = sbox;
         });
 
@@ -324,7 +319,7 @@ public class SBox
         /// <summary>
         /// The number of characters to align the string representation of the array
         /// </summary>
-        public int Padding {get; private set;}
+        public int Padding { get; private set; }
 
         /// <summary>
         /// Initializing an empty array of difference characteristics
@@ -353,7 +348,7 @@ public class SBox
         /// </summary>
         public void WriteToFile(string path, int buffer)
         {
-            MatrixFormatter.FormatMatrix(Matrix, Padding, path, buffer);
+            MatrixWriter.WriteMatrix(Matrix, Padding, path, buffer);
         }
 
         private static int СountDigits(int number)
@@ -371,4 +366,3 @@ public class SBox
     }
 
 }
-

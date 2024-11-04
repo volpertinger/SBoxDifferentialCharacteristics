@@ -9,48 +9,48 @@ public class ExecutionWatch
     /// <summary>
     /// Calculation of the execution time of the entire program
     /// </summary>
-    public Stopwatch allProgram { get; private set; }
+    public Stopwatch AllProgram { get; private set; }
 
     /// <summary>
     /// Calculation of the execution time of the sequential algorithm
     /// </summary>
-    public Stopwatch sequentialAlgorithm { get; private set; }
+    public Stopwatch SequentialAlgorithm { get; private set; }
 
     /// <summary>
     /// Calculation of the execution time of the parallel algorithm
     /// </summary>
-    public Stopwatch parallelAlgorithm { get; private set; }
+    public Stopwatch ParallelAlgorithm { get; private set; }
 
     /// <summary>
     /// Calculation of the time for checking the correctness of the input data
     /// </summary>
-    public Stopwatch inputCheck { get; private set; }
+    public Stopwatch InputCheck { get; private set; }
 
     /// <summary>
     /// Calculation of the input data preparation time to start executing the main algorithm
     /// </summary>
-    public Stopwatch inputPreparation { get; private set; }
+    public Stopwatch InputPreparation { get; private set; }
 
     /// <summary>
     /// Stops all timers
     /// </summary>
     public void StopAll()
     {
-        allProgram.Stop();
-        inputCheck.Stop();
-        inputPreparation.Stop();
-        sequentialAlgorithm.Stop();
-        parallelAlgorithm.Stop();
+        AllProgram.Stop();
+        InputCheck.Stop();
+        InputPreparation.Stop();
+        SequentialAlgorithm.Stop();
+        ParallelAlgorithm.Stop();
     }
 
     public override string ToString()
     {
 
-        return $"\nExecution time [allProgram]: {allProgram.Elapsed.TotalSeconds} second\n" +
-        $"Execution time [inputCheck]: {inputCheck.Elapsed.TotalSeconds} seconds\n" +
-        $"Execution time [inputPreparation]: {inputPreparation.Elapsed.TotalSeconds} seconds\n" +
-        $"Execution time [sequentialAlgorithm]: {sequentialAlgorithm.Elapsed.TotalSeconds} seconds\n" +
-        $"Execution time [parallelAlgorithm]: {parallelAlgorithm.Elapsed.TotalSeconds} seconds\n";
+        return $"\nExecution time [AllProgram]: {AllProgram.Elapsed.TotalSeconds} second\n" +
+        $"Execution time [InputCheck]: {InputCheck.Elapsed.TotalSeconds} seconds\n" +
+        $"Execution time [InputPreparation]: {InputPreparation.Elapsed.TotalSeconds} seconds\n" +
+        $"Execution time [SequentialAlgorithm]: {SequentialAlgorithm.Elapsed.TotalSeconds} seconds\n" +
+        $"Execution time [ParallelAlgorithm]: {ParallelAlgorithm.Elapsed.TotalSeconds} seconds\n";
     }
 
     /// <summary>
@@ -58,10 +58,10 @@ public class ExecutionWatch
     /// </summary>
     public ExecutionWatch()
     {
-        allProgram = new Stopwatch();
-        inputCheck = new Stopwatch();
-        inputPreparation = new Stopwatch();
-        sequentialAlgorithm = new Stopwatch();
-        parallelAlgorithm = new Stopwatch();
+        AllProgram = new Stopwatch();
+        InputCheck = new Stopwatch();
+        InputPreparation = new Stopwatch();
+        SequentialAlgorithm = new Stopwatch();
+        ParallelAlgorithm = new Stopwatch();
     }
 }

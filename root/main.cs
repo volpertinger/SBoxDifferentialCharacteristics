@@ -9,52 +9,53 @@ class Program
         {
             // Measuring the execution time
             var watch = new ExecutionWatch();
-            watch.allProgram.Start();
+            watch.AllProgram.Start();
 
             // Reading the configuration
             var settings = new Settings("root/settings.conf");
 
             // Creating a logger
-            Logger logger = new Logger(settings.logToConsole, settings.logToFile, settings.logPath);
+            Logger logger = new Logger(settings.LogToConsole, settings.LogToFile, settings.LogPath);
             logger.LogInfo($"Start\n{settings.ToString()}\n");
 
             // Reading the input data
-            watch.inputPreparation.Start();
-            if (settings.generatePermutations)
+            watch.InputPreparation.Start();
+            if (settings.GenerateFunction)
             {
-                PermutationsGenerator.generate(settings.inputPath, settings.variableCount);
+                PermutationsGenerator.Generate(settings.InputPath, settings.VariableCount);
+                logger.LogInfo($"The permutations are written to a file: {settings.InputPath}");
             }
-            string[] inputs = File.ReadAllLines(settings.inputPath);
-            watch.inputPreparation.Stop();
+            string[] inputs = File.ReadAllLines(settings.InputPath);
+            watch.InputPreparation.Stop();
 
             // Checking the input data for correctness
-            watch.inputCheck.Start();
-            if (!Validator.isInputCorrect(inputs, settings, logger)) { return; }
-            watch.inputCheck.Stop();
+            watch.InputCheck.Start();
+            if (!Validator.IsInputCorrect(inputs, settings, logger)) { return; }
+            watch.InputCheck.Stop();
 
             // Creating an SBox
-            watch.inputPreparation.Start();
-            SBox sbox = new SBox(inputs, settings.variableCount);
-            watch.inputPreparation.Stop();
+            watch.InputPreparation.Start();
+            SBox sbox = new SBox(inputs, settings.VariableCount);
+            watch.InputPreparation.Stop();
 
             // Calculation of difference characteristics
 
-            if (settings.calculateDifferentialCharacteristicsSequential)
+            if (settings.CalculateSequential)
             {
-                watch.sequentialAlgorithm.Start();
-                sbox.calculateDifferentialCharacteristicsSequential();
-                watch.sequentialAlgorithm.Stop();
-                if (settings.isNeedToWriteResult)
-                    sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
+                watch.SequentialAlgorithm.Start();
+                sbox.CalculateDifferentialCharacteristicsSequential();
+                watch.SequentialAlgorithm.Stop();
+                if (settings.IsNeedToWriteResult)
+                    sbox.GetDifferentialCharacteristic().WriteToFile(settings.OutputPath, settings.WriteBuffer);
             }
 
-            if (settings.calculateDifferentialCharacteristicsParallel)
+            if (settings.CalculateParallel)
             {
-                watch.parallelAlgorithm.Start();
-                sbox.calculateDifferentialCharacteristicsParallel(settings.threadsCount);
-                watch.parallelAlgorithm.Stop();
-                if (settings.isNeedToWriteResult)
-                    sbox.GetDifferentialCharacteristic().WriteToFile(settings.outputPath, settings.writeBuffer);
+                watch.ParallelAlgorithm.Start();
+                sbox.CalculateDifferentialCharacteristicsParallel(settings.ThreadsCount);
+                watch.ParallelAlgorithm.Stop();
+                if (settings.IsNeedToWriteResult)
+                    sbox.GetDifferentialCharacteristic().WriteToFile(settings.OutputPath, settings.WriteBuffer);
             }
 
             watch.StopAll();
