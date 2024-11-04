@@ -1,5 +1,5 @@
 /// <summary>
-/// The essence of the program: calculation of the difference characteristics of the S box by sequential and parallel algorithms
+/// Calculation of the difference characteristics of the S box by sequential and parallel algorithms
 /// </summary>
 class Program
 {

@@ -10,15 +10,18 @@ public class SBox
     private Node[] _output;
 
     /// <summary>
+    /// Array of possible input vectors of the function
+    /// </summary>
+    private Node[] _input;
+
+    /// <summary>
     /// Number of function variables
     /// </summary>
     private int _variable_count;
 
     /// <summary>
-    /// Array of possible input vectors of the function
+    /// Differential characteristics
     /// </summary>
-    private Node[] _input;
-
     private DifferentialCharacteristic _differentialCharacteristic;
 
     //=================================================================================================================
@@ -27,7 +30,7 @@ public class SBox
 
 
     /// <summary>
-    /// Constructor
+    /// Constructor with parameters
     /// </summary>
     /// <param name="output">An array of function values, the vector is represented in string form</param>
     /// <param name="variable_count">Number of function variables</param>
@@ -44,6 +47,22 @@ public class SBox
         _input = Node.ConvertBooleanArrayToNode(input_array);
 
         // Initialization of empty difference characteristics
+        _differentialCharacteristic = new DifferentialCharacteristic(variable_count);
+    }
+
+    /// <summary>
+    /// Constructor with parameters
+    /// </summary>
+    /// <param name="output">An array of function values, the vector is represented in two-dimensional boolean array form</param>
+    /// <param name="variable_count">Number of function variables</param>
+    public SBox(bool[][] output, int variable_count)
+    {
+        _variable_count = variable_count;
+        var input_array = GenerateBooleanArrayFromPermutations(_variable_count);
+
+        _output = Node.ConvertBooleanArrayToNode(output);
+        _input = Node.ConvertBooleanArrayToNode(input_array);
+
         _differentialCharacteristic = new DifferentialCharacteristic(variable_count);
     }
 
@@ -66,64 +85,21 @@ public class SBox
     //=================================================================================================================
     // Public
     //=================================================================================================================
+
     /// <summary>
     /// Getting the function value from the input value
     /// </summary>
-    /// <param name="input">The value of the input in the vector representation</param>
-    /// <returns>The value of a function in a vector representation</returns>
-    public bool[] getVectorResult(bool[] input)
+    public int GetNumberResult(bool[] input)
     {
-        return _output[ConvertBooleanArrayToDecimal(input)].booleanArray;
+        return _output[ConvertBooleanArrayToDecimal(input)].Value;
     }
 
     /// <summary>
     /// Getting the function value from the input value
     /// </summary>
-    /// <param name="index">The value of the input in decimal representation</param>
-    /// <returns>The value of a function in a vector representation</returns>
-    public bool[] getVectorResult(int index)
+    public int GetNumberResult(int index)
     {
-        return _output[index].booleanArray;
-    }
-
-    /// <summary>
-    /// Getting the function value from the input value
-    /// </summary>
-    /// <param name="input">The value of the input in the vector representation</param>
-    /// <returns>The value of the function in decimal representation</returns>
-    public int getNumberResult(bool[] input)
-    {
-        return _output[ConvertBooleanArrayToDecimal(input)].decimalNumber;
-    }
-
-    /// <summary>
-    /// Getting the function value from the input value
-    /// </summary>
-    /// <param name="index">The value of the input in decimal representation</param>
-    /// <returns>The value of the function in decimal representation</returns>
-    public int getNumberResult(int index)
-    {
-        return _output[index].decimalNumber;
-    }
-
-    /// <summary>
-    /// Getting the function value from the input value
-    /// </summary>
-    /// <param name="input">The value of the input in the vector representation</param>
-    /// <returns>The value of the function in the string representation</returns>
-    public string getStringResult(bool[] input)
-    {
-        return string.Join("", getVectorResult(input).Select(b => b ? '1' : '0'));
-    }
-
-    /// <summary>
-    /// Getting the function value from the input value
-    /// </summary>
-    /// <param name="index">The value of the input in decimal representation</param>
-    /// <returns>The value of the function in the string representation</returns>
-    public string getStringResult(int index)
-    {
-        return string.Join("", getVectorResult(index).Select(b => b ? '1' : '0'));
+        return _output[index].Value;
     }
 
     public DifferentialCharacteristic GetDifferentialCharacteristic()
@@ -235,7 +211,7 @@ public class SBox
     /// </summary>
     public void calculateDifferentialCharacteristicsSequential()
     {
-        _differentialCharacteristic.differentialCharacteristic[0][0] = _input.Length;
+        _differentialCharacteristic.Matrix[0][0] = _input.Length;
         for (int i = 0; i < _input.Length; ++i)
         {
             for (int j = i + 1; j < _input.Length; ++j)
@@ -266,14 +242,14 @@ public class SBox
             result[i] = sbox;
         });
 
-        var length = _differentialCharacteristic.differentialCharacteristic.Length;
+        var length = _differentialCharacteristic.Matrix.Length;
         for (int i = 0; i < threads; ++i)
         {
             for (int j = 0; j < length; ++j)
             {
                 for (int k = 0; k < length; ++k)
                 {
-                    _differentialCharacteristic.differentialCharacteristic[j][k] += result[i]._differentialCharacteristic.differentialCharacteristic[j][k];
+                    _differentialCharacteristic.Matrix[j][k] += result[i]._differentialCharacteristic.Matrix[j][k];
                 }
             }
         }
@@ -293,28 +269,27 @@ public class SBox
         /// <summary>
         /// Decimal representation of a Boolean vector
         /// </summary>
-        public int decimalNumber { get; set; }
+        public int Value { get; private set; }
 
         /// <summary>
-        /// Boolean vector
+        /// Basic class constructor from boolean array
         /// </summary>
-        public bool[] booleanArray { get; set; }
-
-        /// <summary>
-        /// Basic Class Constructor
-        /// </summary>
-        /// <param name="_booleanArray">Boolean array</param>
-        public Node(bool[] _booleanArray)
+        public Node(bool[] booleanArray)
         {
-            booleanArray = _booleanArray;
-            decimalNumber = ConvertBooleanArrayToDecimal(booleanArray);
+            Value = ConvertBooleanArrayToDecimal(booleanArray);
+        }
+
+        /// <summary>
+        /// Basic class constructor from int number
+        /// </summary>
+        public Node(int value)
+        {
+            Value = value;
         }
 
         /// <summary>
         /// Converts a two-dimensional Boolean array to an array of the Node class
         /// </summary>
-        /// <param name="input">Two-dimensional Boolean array</param>
-        /// <returns>Array of the Node class</returns>
         public static Node[] ConvertBooleanArrayToNode(bool[][] input)
         {
             Node[] result = new Node[input.Length];
@@ -327,13 +302,7 @@ public class SBox
 
         public static int GetDiff(Node lhs, Node rhs)
         {
-            int result = 0;
-            for (int i = 0; i < lhs.booleanArray.Length; ++i)
-            {
-                result += (lhs.booleanArray[i] ^ rhs.booleanArray[i]) ? 1 : 0;
-            }
-            result = lhs.decimalNumber ^ rhs.decimalNumber;
-            return result;
+            return lhs.Value ^ rhs.Value;
         }
     }
 
@@ -342,7 +311,7 @@ public class SBox
     //=================================================================================================================
 
     /// <summary>
-    /// A class representing the difference characteristics of the S box, as well as the possibilities for calculating these characteristics
+    /// A class representing the difference characteristics of the S box and calculating these characteristics
     /// </summary>
     public class DifferentialCharacteristic
     {
@@ -350,56 +319,52 @@ public class SBox
         /// <summary>
         /// A two-dimensional array with difference characteristics
         /// </summary>
-        public int[][] differentialCharacteristic { get; private set; }
+        public int[][] Matrix { get; private set; }
 
         /// <summary>
         /// The number of characters to align the string representation of the array
         /// </summary>
-        private int padLength;
+        public int Padding {get; private set;}
 
         /// <summary>
         /// Initializing an empty array of difference characteristics
         /// </summary>
-        /// <param name="variable_count">The number of variables of a Boolean function</param>
+        /// <param name="variable_count">The number of variables of a boolean function</param>
         public DifferentialCharacteristic(int variable_count)
         {
             var length = (int)Math.Pow(2, variable_count);
-            differentialCharacteristic = new int[length][];
+            Matrix = new int[length][];
             for (int i = 0; i < length; ++i)
             {
-                differentialCharacteristic[i] = new int[length];
+                Matrix[i] = new int[length];
             }
 
             // +1 due to the use of a separator
-            padLength = СountDigits(length) + 1;
+            Padding = СountDigits(length) + 1;
         }
 
         public void IncrementDifference(int input_diff, int output_diff, int value = 1)
         {
-            differentialCharacteristic[input_diff][output_diff] += value;
+            Matrix[input_diff][output_diff] += value;
         }
 
         /// <summary>
-        /// Represents a two-dimensional array in human-readable form
+        /// Writes a two-dimensional array in human-readable form to file
         /// </summary>
-        /// <returns>String representation of a two-dimensional array</returns>
         public void WriteToFile(string path, int buffer)
         {
-            MatrixFormatter.FormatMatrix(differentialCharacteristic, padLength, path, buffer);
+            MatrixFormatter.FormatMatrix(Matrix, Padding, path, buffer);
         }
 
         private static int СountDigits(int number)
         {
-            // We bring the number to a positive value
             number = Math.Abs(number);
 
-            // Checking whether the number is zero
             if (number == 0)
             {
-                return 1; // If the number is zero, then the digits are 1
+                return 1;
             }
 
-            // We use the logarithm to count the number of integers
             return (int)Math.Floor(Math.Log10(number)) + 1;
         }
 
