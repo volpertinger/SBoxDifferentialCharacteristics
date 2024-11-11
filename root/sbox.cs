@@ -69,13 +69,13 @@ public class SBox
     /// <summary>
     /// Copy Constructor
     /// </summary>
-    public SBox(SBox sbox, Node[] input)
+    public SBox(SBox sbox)
     {
         _variable_count = sbox._variable_count;
 
         // Converting Boolean arrays in an array of the Node class
         _output = sbox._output;
-        _input = input;
+        _input = sbox._input;
 
         // Initialization of empty difference characteristics
         _differentialCharacteristic = new DifferentialCharacteristic(_variable_count);
@@ -213,7 +213,23 @@ public class SBox
             {
                 var input_diff = Node.GetDiff(_input[i], _input[j]);
                 var output_diff = Node.GetDiff(_output[i], _output[j]);
-                // 2 due to the mirrored nature of calculations at j=i
+                _differentialCharacteristic.IncrementDifference(input_diff, output_diff, 2);
+            }
+        }
+        return;
+    }
+
+    /// <summary>
+    /// Calculates differential characteristics of S Box sequential with granular algorithm for parallel algorithm
+    /// </summary>
+    public void CalculateDifferentialCharacteristicsSequentialGranular(int left_border, int right_border)
+    {
+        for (int i = left_border; i <= right_border; ++i)
+        {
+            for (int j = i + 1; j < _input.Length; ++j)
+            {
+                var input_diff = Node.GetDiff(_input[i], _input[j]);
+                var output_diff = Node.GetDiff(_output[i], _output[j]);
                 _differentialCharacteristic.IncrementDifference(input_diff, output_diff, 2);
             }
         }
@@ -226,14 +242,15 @@ public class SBox
     /// <param name="threads">Threads count</param>
     public void CalculateDifferentialCharacteristicsParallel(int threads)
     {
+        
         var splitted_input = SplitArray(_input, threads);
         var result = new SBox[threads];
 
         // Parallel output of arrays
         Parallel.For(0, splitted_input.Length, i =>
         {
-            var sbox = new SBox(this, splitted_input[i]);
-            sbox.CalculateDifferentialCharacteristicsSequential();
+            var sbox = new SBox(this);
+            sbox.CalculateDifferentialCharacteristicsSequentialGranular(splitted_input[i][0].Value, splitted_input[i][^1].Value);
             result[i] = sbox;
         });
 
