@@ -1,0 +1,819 @@
+11/3/2024 9:33:40 PM: INFO: Start
+variables: 1; inputs: 2;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:33:40 PM: INFO: 
+Execution time [allProgram]: 0.0345794 second
+Execution time [inputCheck]: 0.0004694 seconds
+Execution time [inputPreparation]: 0.0013634 seconds
+Execution time [sequentialAlgorithm]: 0.0001778 seconds
+Execution time [parallelAlgorithm]: 0.0059918 seconds
+
+11/3/2024 9:33:53 PM: INFO: Start
+variables: 2; inputs: 4;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:33:53 PM: INFO: 
+Execution time [allProgram]: 0.0347223 second
+Execution time [inputCheck]: 0.0005154 seconds
+Execution time [inputPreparation]: 0.0015416 seconds
+Execution time [sequentialAlgorithm]: 0.0001586 seconds
+Execution time [parallelAlgorithm]: 0.0062445 seconds
+
+11/3/2024 9:33:59 PM: INFO: Start
+variables: 3; inputs: 8;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:33:59 PM: INFO: 
+Execution time [allProgram]: 0.0342835 second
+Execution time [inputCheck]: 0.0004976 seconds
+Execution time [inputPreparation]: 0.0016737 seconds
+Execution time [sequentialAlgorithm]: 0.0001606 seconds
+Execution time [parallelAlgorithm]: 0.006152 seconds
+
+11/3/2024 9:34:06 PM: INFO: Start
+variables: 4; inputs: 16;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:06 PM: INFO: 
+Execution time [allProgram]: 0.0352368 second
+Execution time [inputCheck]: 0.0005167 seconds
+Execution time [inputPreparation]: 0.0016899 seconds
+Execution time [sequentialAlgorithm]: 0.0001761 seconds
+Execution time [parallelAlgorithm]: 0.0067335 seconds
+
+11/3/2024 9:34:14 PM: INFO: Start
+variables: 5; inputs: 32;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:14 PM: INFO: 
+Execution time [allProgram]: 0.0343008 second
+Execution time [inputCheck]: 0.0004857 seconds
+Execution time [inputPreparation]: 0.0014744 seconds
+Execution time [sequentialAlgorithm]: 0.0002395 seconds
+Execution time [parallelAlgorithm]: 0.0063816 seconds
+
+11/3/2024 9:34:22 PM: INFO: Start
+variables: 6; inputs: 64;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:22 PM: INFO: 
+Execution time [allProgram]: 0.0321238 second
+Execution time [inputCheck]: 0.0004812 seconds
+Execution time [inputPreparation]: 0.001451 seconds
+Execution time [sequentialAlgorithm]: 0.0005008 seconds
+Execution time [parallelAlgorithm]: 0.006179 seconds
+
+11/3/2024 9:34:28 PM: INFO: Start
+variables: 7; inputs: 128;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:28 PM: INFO: 
+Execution time [allProgram]: 0.0376509 second
+Execution time [inputCheck]: 0.0005109 seconds
+Execution time [inputPreparation]: 0.001571 seconds
+Execution time [sequentialAlgorithm]: 0.0016333 seconds
+Execution time [parallelAlgorithm]: 0.0068207 seconds
+
+11/3/2024 9:34:35 PM: INFO: Start
+variables: 8; inputs: 256;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:35 PM: INFO: 
+Execution time [allProgram]: 0.0493354 second
+Execution time [inputCheck]: 0.0005577 seconds
+Execution time [inputPreparation]: 0.0019587 seconds
+Execution time [sequentialAlgorithm]: 0.0068175 seconds
+Execution time [parallelAlgorithm]: 0.0092147 seconds
+
+11/3/2024 9:34:45 PM: INFO: Start
+variables: 9; inputs: 512;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:45 PM: INFO: 
+Execution time [allProgram]: 0.0753751 second
+Execution time [inputCheck]: 0.0005491 seconds
+Execution time [inputPreparation]: 0.001949 seconds
+Execution time [sequentialAlgorithm]: 0.0294351 seconds
+Execution time [parallelAlgorithm]: 0.0188131 seconds
+
+11/3/2024 9:34:52 PM: INFO: Start
+variables: 10; inputs: 1024;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:34:52 PM: INFO: 
+Execution time [allProgram]: 0.211441 second
+Execution time [inputCheck]: 0.0007326 seconds
+Execution time [inputPreparation]: 0.002696 seconds
+Execution time [sequentialAlgorithm]: 0.131066 seconds
+Execution time [parallelAlgorithm]: 0.0516155 seconds
+
+11/3/2024 9:35:01 PM: INFO: Start
+variables: 11; inputs: 2048;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:35:01 PM: INFO: 
+Execution time [allProgram]: 0.8383264 second
+Execution time [inputCheck]: 0.0008819 seconds
+Execution time [inputPreparation]: 0.0057052 seconds
+Execution time [sequentialAlgorithm]: 0.6336447 seconds
+Execution time [parallelAlgorithm]: 0.1718362 seconds
+
+11/3/2024 9:35:09 PM: INFO: Start
+variables: 12; inputs: 4096;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:35:13 PM: INFO: 
+Execution time [allProgram]: 3.5399099 second
+Execution time [inputCheck]: 0.0011675 seconds
+Execution time [inputPreparation]: 0.0141463 seconds
+Execution time [sequentialAlgorithm]: 2.8265836 seconds
+Execution time [parallelAlgorithm]: 0.6731348 seconds
+
+11/3/2024 9:36:40 PM: INFO: Start
+variables: 13; inputs: 8192;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:36:56 PM: INFO: 
+Execution time [allProgram]: 15.9473091 second
+Execution time [inputCheck]: 0.0021031 seconds
+Execution time [inputPreparation]: 0.0515407 seconds
+Execution time [sequentialAlgorithm]: 13.0082123 seconds
+Execution time [parallelAlgorithm]: 2.8588183 seconds
+
+11/3/2024 9:37:36 PM: INFO: Start
+variables: 14; inputs: 16384;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:38:43 PM: INFO: 
+Execution time [allProgram]: 67.1394484 second
+Execution time [inputCheck]: 0.0040253 seconds
+Execution time [inputPreparation]: 0.1527893 seconds
+Execution time [sequentialAlgorithm]: 54.3833098 seconds
+Execution time [parallelAlgorithm]: 12.5766448 seconds
+
+11/3/2024 9:39:32 PM: INFO: Start
+variables: 15; inputs: 32768;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 9:44:19 PM: INFO: 
+Execution time [allProgram]: 287.1916124 second
+Execution time [inputCheck]: 0.0076509 seconds
+Execution time [inputPreparation]: 0.1120382 seconds
+Execution time [sequentialAlgorithm]: 230.6141955 seconds
+Execution time [parallelAlgorithm]: 56.4271399 seconds
+
+11/3/2024 10:06:26 PM: INFO: Start
+variables: 1; inputs: 2;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:06:26 PM: INFO: 
+Execution time [allProgram]: 0.0397135 second
+Execution time [inputCheck]: 0.0006227 seconds
+Execution time [inputPreparation]: 0.0018233 seconds
+Execution time [sequentialAlgorithm]: 0.0001756 seconds
+Execution time [parallelAlgorithm]: 0.0066436 seconds
+
+11/3/2024 10:07:00 PM: INFO: Start
+variables: 2; inputs: 4;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:07:00 PM: INFO: 
+Execution time [allProgram]: 0.0384416 second
+Execution time [inputCheck]: 0.0004634 seconds
+Execution time [inputPreparation]: 0.0015231 seconds
+Execution time [sequentialAlgorithm]: 0.0001566 seconds
+Execution time [parallelAlgorithm]: 0.0061685 seconds
+
+11/3/2024 10:07:12 PM: INFO: Start
+variables: 3; inputs: 8;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:07:12 PM: INFO: 
+Execution time [allProgram]: 0.0321977 second
+Execution time [inputCheck]: 0.0004801 seconds
+Execution time [inputPreparation]: 0.0014938 seconds
+Execution time [sequentialAlgorithm]: 0.0001604 seconds
+Execution time [parallelAlgorithm]: 0.0058156 seconds
+
+11/3/2024 10:07:46 PM: INFO: Start
+variables: 4; inputs: 16;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:07:46 PM: INFO: 
+Execution time [allProgram]: 0.033129 second
+Execution time [inputCheck]: 0.0004992 seconds
+Execution time [inputPreparation]: 0.0016474 seconds
+Execution time [sequentialAlgorithm]: 0.0002096 seconds
+Execution time [parallelAlgorithm]: 0.0062015 seconds
+
+11/3/2024 10:08:15 PM: INFO: Start
+variables: 5; inputs: 32;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:08:15 PM: INFO: 
+Execution time [allProgram]: 0.0328975 second
+Execution time [inputCheck]: 0.0004683 seconds
+Execution time [inputPreparation]: 0.0014142 seconds
+Execution time [sequentialAlgorithm]: 0.0002297 seconds
+Execution time [parallelAlgorithm]: 0.0061054 seconds
+
+11/3/2024 10:08:34 PM: INFO: Start
+variables: 6; inputs: 64;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:08:34 PM: INFO: 
+Execution time [allProgram]: 0.0368734 second
+Execution time [inputCheck]: 0.0007935 seconds
+Execution time [inputPreparation]: 0.0016511 seconds
+Execution time [sequentialAlgorithm]: 0.0004832 seconds
+Execution time [parallelAlgorithm]: 0.0062356 seconds
+
+11/3/2024 10:08:51 PM: INFO: Start
+variables: 7; inputs: 128;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:08:51 PM: INFO: 
+Execution time [allProgram]: 0.0443959 second
+Execution time [inputCheck]: 0.0006216 seconds
+Execution time [inputPreparation]: 0.0027447 seconds
+Execution time [sequentialAlgorithm]: 0.0017973 seconds
+Execution time [parallelAlgorithm]: 0.0077157 seconds
+
+11/3/2024 10:09:06 PM: INFO: Start
+variables: 8; inputs: 256;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:09:06 PM: INFO: 
+Execution time [allProgram]: 0.0423651 second
+Execution time [inputCheck]: 0.0005129 seconds
+Execution time [inputPreparation]: 0.0016394 seconds
+Execution time [sequentialAlgorithm]: 0.0068188 seconds
+Execution time [parallelAlgorithm]: 0.008566 seconds
+
+11/3/2024 10:09:23 PM: INFO: Start
+variables: 9; inputs: 512;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:09:23 PM: INFO: 
+Execution time [allProgram]: 0.0763105 second
+Execution time [inputCheck]: 0.0006371 seconds
+Execution time [inputPreparation]: 0.0025384 seconds
+Execution time [sequentialAlgorithm]: 0.029906 seconds
+Execution time [parallelAlgorithm]: 0.0185288 seconds
+
+11/3/2024 10:09:35 PM: INFO: Start
+variables: 10; inputs: 1024;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:09:36 PM: INFO: 
+Execution time [allProgram]: 0.2113367 second
+Execution time [inputCheck]: 0.0011025 seconds
+Execution time [inputPreparation]: 0.0026965 seconds
+Execution time [sequentialAlgorithm]: 0.127539 seconds
+Execution time [parallelAlgorithm]: 0.055698 seconds
+
+11/3/2024 10:09:48 PM: INFO: Start
+variables: 11; inputs: 2048;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:09:49 PM: INFO: 
+Execution time [allProgram]: 0.9132478 second
+Execution time [inputCheck]: 0.0008358 seconds
+Execution time [inputPreparation]: 0.0059655 seconds
+Execution time [sequentialAlgorithm]: 0.6469937 seconds
+Execution time [parallelAlgorithm]: 0.233003 seconds
+
+11/3/2024 10:10:03 PM: INFO: Start
+variables: 12; inputs: 4096;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:10:06 PM: INFO: 
+Execution time [allProgram]: 3.916888 second
+Execution time [inputCheck]: 0.001218 seconds
+Execution time [inputPreparation]: 0.017974 seconds
+Execution time [sequentialAlgorithm]: 2.8472345 seconds
+Execution time [parallelAlgorithm]: 0.9844502 seconds
+
+11/3/2024 10:10:18 PM: INFO: Start
+variables: 13; inputs: 8192;
+calculate sequential: True;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:10:36 PM: INFO: 
+Execution time [allProgram]: 17.0770878 second
+Execution time [inputCheck]: 0.0021531 seconds
+Execution time [inputPreparation]: 0.067946 seconds
+Execution time [sequentialAlgorithm]: 12.8191127 seconds
+Execution time [parallelAlgorithm]: 4.1610999 seconds
+
+11/3/2024 10:11:05 PM: INFO: Start
+variables: 14; inputs: 16384;
+calculate sequential: False;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:11:23 PM: INFO: 
+Execution time [allProgram]: 18.0985622 second
+Execution time [inputCheck]: 0.0037821 seconds
+Execution time [inputPreparation]: 0.2238075 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 17.846229 seconds
+
+11/3/2024 10:11:39 PM: INFO: Start
+variables: 15; inputs: 32768;
+calculate sequential: False;
+calculate parallel: True; threads: 2;
+permutations generation: True;
+
+11/3/2024 10:12:56 PM: INFO: 
+Execution time [allProgram]: 77.5684147 second
+Execution time [inputCheck]: 0.0072312 seconds
+Execution time [inputPreparation]: 0.1107897 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 77.4244143 seconds
+
+11/3/2024 10:22:59 PM: INFO: Start
+variables: 1; inputs: 2;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:22:59 PM: INFO: 
+Execution time [allProgram]: 0.0373162 second
+Execution time [inputCheck]: 0.0005177 seconds
+Execution time [inputPreparation]: 0.002 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0065164 seconds
+
+11/3/2024 10:23:12 PM: INFO: Start
+variables: 2; inputs: 4;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:23:12 PM: INFO: 
+Execution time [allProgram]: 0.032606 second
+Execution time [inputCheck]: 0.0004875 seconds
+Execution time [inputPreparation]: 0.00144 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0062919 seconds
+
+11/3/2024 10:23:24 PM: INFO: Start
+variables: 3; inputs: 8;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:23:24 PM: INFO: 
+Execution time [allProgram]: 0.0798914 second
+Execution time [inputCheck]: 0.0006714 seconds
+Execution time [inputPreparation]: 0.0016358 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0063367 seconds
+
+11/3/2024 10:23:37 PM: INFO: Start
+variables: 4; inputs: 16;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:23:37 PM: INFO: 
+Execution time [allProgram]: 0.0355081 second
+Execution time [inputCheck]: 0.0008276 seconds
+Execution time [inputPreparation]: 0.0024672 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0063327 seconds
+
+11/3/2024 10:23:54 PM: INFO: Start
+variables: 5; inputs: 32;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:23:54 PM: INFO: 
+Execution time [allProgram]: 0.0358906 second
+Execution time [inputCheck]: 0.0004639 seconds
+Execution time [inputPreparation]: 0.001436 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0063488 seconds
+
+11/3/2024 10:24:08 PM: INFO: Start
+variables: 6; inputs: 64;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:24:08 PM: INFO: 
+Execution time [allProgram]: 0.0328116 second
+Execution time [inputCheck]: 0.0004861 seconds
+Execution time [inputPreparation]: 0.0014952 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0062561 seconds
+
+11/3/2024 10:24:21 PM: INFO: Start
+variables: 7; inputs: 128;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:24:21 PM: INFO: 
+Execution time [allProgram]: 0.0353567 second
+Execution time [inputCheck]: 0.0005087 seconds
+Execution time [inputPreparation]: 0.0016093 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0076457 seconds
+
+11/3/2024 10:24:37 PM: INFO: Start
+variables: 8; inputs: 256;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:24:37 PM: INFO: 
+Execution time [allProgram]: 0.0358053 second
+Execution time [inputCheck]: 0.0005023 seconds
+Execution time [inputPreparation]: 0.0015982 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0098453 seconds
+
+11/3/2024 10:24:47 PM: INFO: Start
+variables: 9; inputs: 512;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:24:47 PM: INFO: 
+Execution time [allProgram]: 0.0496016 second
+Execution time [inputCheck]: 0.0005413 seconds
+Execution time [inputPreparation]: 0.0019379 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0212788 seconds
+
+11/3/2024 10:25:01 PM: INFO: Start
+variables: 10; inputs: 1024;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:25:01 PM: INFO: 
+Execution time [allProgram]: 0.0968611 second
+Execution time [inputCheck]: 0.0007508 seconds
+Execution time [inputPreparation]: 0.002728 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0682393 seconds
+
+11/3/2024 10:25:16 PM: INFO: Start
+variables: 11; inputs: 2048;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:25:16 PM: INFO: 
+Execution time [allProgram]: 0.2524947 second
+Execution time [inputCheck]: 0.0007902 seconds
+Execution time [inputPreparation]: 0.005438 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.2237823 seconds
+
+11/3/2024 10:25:37 PM: INFO: Start
+variables: 12; inputs: 4096;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:25:38 PM: INFO: 
+Execution time [allProgram]: 0.9146468 second
+Execution time [inputCheck]: 0.0012842 seconds
+Execution time [inputPreparation]: 0.016829 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.8701247 seconds
+
+11/3/2024 10:25:51 PM: INFO: Start
+variables: 13; inputs: 8192;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:25:55 PM: INFO: 
+Execution time [allProgram]: 3.6624424 second
+Execution time [inputCheck]: 0.002087 seconds
+Execution time [inputPreparation]: 0.0535091 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 3.5792847 seconds
+
+11/3/2024 10:26:07 PM: INFO: Start
+variables: 14; inputs: 16384;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:26:24 PM: INFO: 
+Execution time [allProgram]: 16.6044468 second
+Execution time [inputCheck]: 0.0036932 seconds
+Execution time [inputPreparation]: 0.1493285 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 16.4258595 seconds
+
+11/3/2024 10:26:44 PM: INFO: Start
+variables: 14; inputs: 16384;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:27:00 PM: INFO: 
+Execution time [allProgram]: 16.327306 second
+Execution time [inputCheck]: 0.0036052 seconds
+Execution time [inputPreparation]: 0.1438756 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 16.1545805 seconds
+
+11/3/2024 10:27:11 PM: INFO: Start
+variables: 14; inputs: 16384;
+calculate sequential: False;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 10:27:24 PM: INFO: 
+Execution time [allProgram]: 12.2822844 second
+Execution time [inputCheck]: 0.0037189 seconds
+Execution time [inputPreparation]: 0.1452415 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 12.1066997 seconds
+
+11/3/2024 10:27:40 PM: INFO: Start
+variables: 15; inputs: 32768;
+calculate sequential: False;
+calculate parallel: True; threads: 6;
+permutations generation: True;
+
+11/3/2024 10:28:52 PM: INFO: 
+Execution time [allProgram]: 71.5847676 second
+Execution time [inputCheck]: 0.0073661 seconds
+Execution time [inputPreparation]: 0.1172627 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 71.4328162 seconds
+
+11/3/2024 10:33:48 PM: INFO: Start
+variables: 1; inputs: 2;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:33:48 PM: INFO: 
+Execution time [allProgram]: 0.0339901 second
+Execution time [inputCheck]: 0.000506 seconds
+Execution time [inputPreparation]: 0.002091 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0061944 seconds
+
+11/3/2024 10:34:04 PM: INFO: Start
+variables: 2; inputs: 4;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:34:04 PM: INFO: 
+Execution time [allProgram]: 0.0812275 second
+Execution time [inputCheck]: 0.002628 seconds
+Execution time [inputPreparation]: 0.0033488 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0068374 seconds
+
+11/3/2024 10:34:18 PM: INFO: Start
+variables: 3; inputs: 8;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:34:18 PM: INFO: 
+Execution time [allProgram]: 0.0325094 second
+Execution time [inputCheck]: 0.0005402 seconds
+Execution time [inputPreparation]: 0.0019166 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0066336 seconds
+
+11/3/2024 10:34:32 PM: INFO: Start
+variables: 4; inputs: 16;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:34:32 PM: INFO: 
+Execution time [allProgram]: 0.033138 second
+Execution time [inputCheck]: 0.0004794 seconds
+Execution time [inputPreparation]: 0.001416 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0063679 seconds
+
+11/3/2024 10:34:47 PM: INFO: Start
+variables: 5; inputs: 32;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:34:47 PM: INFO: 
+Execution time [allProgram]: 0.0356074 second
+Execution time [inputCheck]: 0.0004795 seconds
+Execution time [inputPreparation]: 0.0014839 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0069603 seconds
+
+11/3/2024 10:35:02 PM: INFO: Start
+variables: 6; inputs: 64;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:35:02 PM: INFO: 
+Execution time [allProgram]: 0.036299 second
+Execution time [inputCheck]: 0.0006447 seconds
+Execution time [inputPreparation]: 0.0018073 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0068028 seconds
+
+11/3/2024 10:35:14 PM: INFO: Start
+variables: 7; inputs: 128;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:35:14 PM: INFO: 
+Execution time [allProgram]: 0.0371921 second
+Execution time [inputCheck]: 0.000528 seconds
+Execution time [inputPreparation]: 0.0016594 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0074901 seconds
+
+11/3/2024 10:35:32 PM: INFO: Start
+variables: 8; inputs: 256;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:35:32 PM: INFO: 
+Execution time [allProgram]: 0.0389277 second
+Execution time [inputCheck]: 0.0005269 seconds
+Execution time [inputPreparation]: 0.0016954 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0118425 seconds
+
+11/3/2024 10:35:44 PM: INFO: Start
+variables: 9; inputs: 512;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:35:44 PM: INFO: 
+Execution time [allProgram]: 0.0514419 second
+Execution time [inputCheck]: 0.0005881 seconds
+Execution time [inputPreparation]: 0.0020337 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0241586 seconds
+
+11/3/2024 10:35:56 PM: INFO: Start
+variables: 10; inputs: 1024;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:35:56 PM: INFO: 
+Execution time [allProgram]: 0.1113717 second
+Execution time [inputCheck]: 0.0007292 seconds
+Execution time [inputPreparation]: 0.0025644 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.0842253 seconds
+
+11/3/2024 10:36:11 PM: INFO: Start
+variables: 11; inputs: 2048;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:36:11 PM: INFO: 
+Execution time [allProgram]: 0.3179367 second
+Execution time [inputCheck]: 0.000857 seconds
+Execution time [inputPreparation]: 0.0061416 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 0.2855992 seconds
+
+11/3/2024 10:36:25 PM: INFO: Start
+variables: 12; inputs: 4096;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:36:26 PM: INFO: 
+Execution time [allProgram]: 1.1646475 second
+Execution time [inputCheck]: 0.0013525 seconds
+Execution time [inputPreparation]: 0.0161092 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 1.1206321 seconds
+
+11/3/2024 10:36:40 PM: INFO: Start
+variables: 13; inputs: 8192;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:36:44 PM: INFO: 
+Execution time [allProgram]: 4.5627441 second
+Execution time [inputCheck]: 0.0020901 seconds
+Execution time [inputPreparation]: 0.0910583 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 4.4425919 seconds
+
+11/3/2024 10:36:57 PM: INFO: Start
+variables: 14; inputs: 16384;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:37:18 PM: INFO: 
+Execution time [allProgram]: 21.329997 second
+Execution time [inputCheck]: 0.0039795 seconds
+Execution time [inputPreparation]: 0.1509782 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 21.1481654 seconds
+
+11/3/2024 10:37:34 PM: INFO: Start
+variables: 15; inputs: 32768;
+calculate sequential: False;
+calculate parallel: True; threads: 8;
+permutations generation: True;
+
+11/3/2024 10:39:03 PM: INFO: 
+Execution time [allProgram]: 88.0969263 second
+Execution time [inputCheck]: 0.0072733 seconds
+Execution time [inputPreparation]: 0.110513 seconds
+Execution time [sequentialAlgorithm]: 0 seconds
+Execution time [parallelAlgorithm]: 87.9542491 seconds
+
+11/3/2024 11:52:56 PM: INFO: Start
+variables: 10; inputs: 1024;
+calculate sequential: True;
+calculate parallel: True; threads: 4;
+permutations generation: True;
+
+11/3/2024 11:52:56 PM: INFO: 
+Execution time [allProgram]: 0.279786 second
+Execution time [inputCheck]: 0.0006506 seconds
+Execution time [inputPreparation]: 0.0026281 seconds
+Execution time [sequentialAlgorithm]: 0.1243187 seconds
+Execution time [parallelAlgorithm]: 0.0509827 seconds
+
