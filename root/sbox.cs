@@ -265,6 +265,7 @@ public class SBox
                 }
             }
         }
+        _differentialCharacteristic.Matrix[0][0] = length;
         return;
     }
 

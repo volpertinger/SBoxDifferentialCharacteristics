@@ -51,6 +51,7 @@ class Program
 
             if (settings.CalculateParallel)
             {
+                sbox = new SBox(inputs, settings.VariableCount);
                 watch.ParallelAlgorithm.Start();
                 sbox.CalculateDifferentialCharacteristicsParallel(settings.ThreadsCount);
                 watch.ParallelAlgorithm.Stop();
